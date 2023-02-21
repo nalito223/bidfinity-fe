@@ -1,0 +1,161 @@
+.landing-page-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  /* margin: 5%; */
+  gap: 2%;
+  max-width: 1100px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  /* border: 2px solid green */
+}
+
+.tree-image {
+  height: 40vh;
+}
+
+.landing-page-left {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+  /* border: 2px solid red; */
+  font-family: 'Lato', sans-serif;
+  width: 50%;
+  color: #3a3f54;
+  font-size: 2.5vh;
+}
+
+.landing-page-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  /* border: 2px solid blue; */
+  width: 50%;
+}
+
+.landing-page-bold-text {
+  font-family: 'Lato', sans-serif;
+  font-weight: 900;
+  font-size: 4vh;
+}
+
+.get-started-button {
+  background-color: rgb(224, 122, 95);
+  height: 4vh;
+  font-size: 2vh;
+  width: fit-content;
+  cursor: pointer;
+  outline: 0;
+  border: none;
+  border-radius: 16px;
+  width: 30%;
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+  color: white;
+  min-width: fit-content;
+}
+
+.get-started-button:hover {
+  transition: 300ms;
+  background-color: #6e3e2e
+}
+
+.landing-page-divider {
+  width: 7%;
+  margin: 2%;
+  border-bottom: 6px solid rgb(30, 164, 116);
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+}
+
+.landing-page-roles-container {
+  display: flex;
+  width: 90%;
+  max-width: 1100px;
+  height: 75%;
+  gap: 2%;
+  font-size: 2vh;
+  text-align: center;
+  color: #3a3f54;
+}
+
+.landing-page-roles-left {
+  /* border: 2px solid yellow; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  padding: 5%;
+}
+
+.landing-page-roles-right {
+  /* border: 2px solid yellow; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  padding: 5%;
+}
+
+/* .home-image {
+  height: 4vh;
+  padding: 5%;
+  border-radius: 50%;
+  background-color: white;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+} */
+
+.home-image {
+  height: 4vh;
+  padding: 5%;
+
+}
+
+.image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: white;
+  overflow: hidden;
+  height: 75px;
+  width: 75px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.process-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: max-content;
+  width: 100%;
+  background-color: #eaedef;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  color: #3a3f54;
+}
+
+.process-sub-container {
+  width: 90%;
+  gap: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.process-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+}
+
+.process-text-container > p {
+  text-align: center;
+  margin: 0
+}

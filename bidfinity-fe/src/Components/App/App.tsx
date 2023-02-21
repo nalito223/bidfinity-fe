@@ -3,12 +3,23 @@ import { NavLink, Route, Routes } from "react-router-dom"
 import React from "react"
 import './App.css'
 import Nav from '../Nav/Nav'
+import LandingPage from "../LandingPage/LandingPage"
+import Footer from "../Footer/Footer"
 
 const App: React.FC = () => {
   return (
     <main className="App">
-      <h1>Test</h1>
       <Nav />
+      <Routes>
+        <Route path="/"
+          element={
+            <>
+              <LandingPage />
+              <Footer />
+            </>
+          }
+        />
+      </Routes>
     </main>
   );
 }
