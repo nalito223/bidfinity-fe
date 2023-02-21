@@ -3,9 +3,11 @@
   align-items: center;
   justify-content: center;
   width: 90%;
-  margin: 5%;
+  /* margin: 5%; */
   gap: 2%;
   max-width: 1100px;
+  margin-top: 5%;
+  margin-bottom: 5%;
   /* border: 2px solid green */
 }
 
@@ -28,7 +30,7 @@
 .landing-page-right {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   /* border: 2px solid blue; */
   width: 50%;
 }
@@ -70,7 +72,6 @@
 
 .landing-page-roles-container {
   display: flex;
-  /* border: 2px solid red; */
   width: 90%;
   max-width: 1100px;
   height: 75%;
@@ -80,21 +81,13 @@
   color: #3a3f54;
 }
 
-.landing-page-explainer-container {
-  height: 400px;
-  width: 100vw;
-  background-color: #eaedef;
-}
-
 .landing-page-roles-left {
   /* border: 2px solid yellow; */
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 50%;
-  padding: 2%;
-  padding-left: 4%;
-  padding-right: 4%;
+  padding: 5%;
 }
 
 .landing-page-roles-right {
@@ -103,18 +96,66 @@
   flex-direction: column;
   align-items: center;
   width: 50%;
-  padding: 2%;
-  padding-left: 4%;
-  padding-right: 4%;
+  padding: 5%;
 }
 
-.home-image {
+/* .home-image {
   height: 4vh;
-  /* margin: 1%; */
-  padding: 2%;
-  /* filter: grayscale(100%) hue-rotate(9deg); */
+  padding: 5%;
   border-radius: 50%;
   background-color: white;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+} */
+
+.home-image {
+  height: 4vh;
+  padding: 5%;
+
 }
 
+.image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: white;
+  overflow: hidden;
+  height: 75px;
+  width: 75px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.process-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: max-content;
+  width: 100%;
+  background-color: #eaedef;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  color: #3a3f54;
+}
+
+.process-sub-container {
+  width: 90%;
+  gap: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.process-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+}
+
+.process-text-container > p {
+  text-align: center;
+  margin: 0
+}
