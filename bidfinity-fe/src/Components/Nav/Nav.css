@@ -1,0 +1,79 @@
+.nav-logo {
+  font-family: 'Lato', sans-serif, ;
+  font-weight: 900;
+  font-size: 6vh;
+  color: rgb(224, 122, 95);
+  margin: 0;
+  padding: 0;
+}
+
+.green {
+  color: rgb(30, 164, 116)
+}
+
+.nav-container {
+  display: flex;
+  width: 95%;
+  height: 10%;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 50%;
+  height: 100%
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 50%;
+  height: 100%;
+  gap: 2%;
+}
+
+.log-in-button {
+  background-color: rgb(130, 180, 156);
+  height: 4vh;
+  font-size: 2vh;
+  width: fit-content;
+  cursor: pointer;
+  outline: 0;
+  border: none;
+  border-radius: 16px;
+  width: 20%;
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+  color: white;
+  min-width: 85px;
+}
+
+.log-in-button:hover {
+  transition: 300ms;
+  background-color: #415a4e;
+}
+
+.sign-up-button {
+  /* background-color: rgb(62, 64, 91); */
+  background-color: #51536b;
+  height: 4vh;
+  font-size: 2vh;
+  width: fit-content;
+  cursor: pointer;
+  outline: 0;
+  border: none;
+  border-radius: 16px;
+  width: 20%;
+  min-width: 85px;
+  font-family: 'Lato', sans-serif;
+  /* font-weight: 400; */
+  font-weight: bold;
+  color: white;
+}
+
+.sign-up-button:hover {
+  transition: 300ms;
+  background-color: #1f202e;
+}
