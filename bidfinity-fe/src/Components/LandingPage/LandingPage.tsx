@@ -13,9 +13,12 @@ import clipboard from "../../images/clipboard.png"
 // @ts-ignore
 import search from "../../images/search.png"
 
+interface LandingPageProps {
+  openModal: () => void;
+}
 
 
-const LandingPage: React.FC = () => {
+const LandingPage: React.FC<LandingPageProps> = ({ openModal }) => {
 
   return (
     <>
@@ -23,7 +26,9 @@ const LandingPage: React.FC = () => {
         <div className="landing-page-left">
           <h2 className="landing-page-bold-text">Connect with landscape buyers and vendors.</h2>
           <p>Find the best projects. Get the best prices. Save time and money.</p>
-          <button className="get-started-button">Get started</button>
+          <button className="get-started-button"
+            onClick={() => console.log("made it to get started")}
+          >Get started</button>
         </div>
         <div className="landing-page-right">
           <img src={tree} alt="Image of a tree" className="tree-image" />
@@ -37,7 +42,9 @@ const LandingPage: React.FC = () => {
           </div>
           <h2>I'm a contractor</h2>
           <p>Post your projects and get the best prices on landscape materials</p>
-          <button className="sign-up-button">Sign up</button>
+          <button className="sign-up-button"
+          >Sign up</button>
+
         </div>
         <div className="landing-page-roles-right">
           <div className="image-wrapper">
