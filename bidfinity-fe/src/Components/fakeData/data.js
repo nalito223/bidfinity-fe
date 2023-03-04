@@ -6,7 +6,7 @@ const accountsData = [
     email: 'johndoe@example.com',
     password: 'password123',
     phone_number: '555-555-5555',
-    account_type: 'business',
+    account_type: 'buyer',
     hosted_projects: [1],
     bookmarked_projects: [2],
     country: 'USA',
@@ -20,7 +20,7 @@ const accountsData = [
     email: 'janedoe@example.com',
     password: 'password456',
     phone_number: '555-555-5556',
-    account_type: 'personal',
+    account_type: 'seller',
     hosted_projects: [2],
     bookmarked_projects: [1],
     country: 'USA',
@@ -34,7 +34,7 @@ const accountsData = [
     email: 'bob@example.com',
     password: 'password789',
     phone_number: '555-555-5557',
-    account_type: 'business',
+    account_type: 'buyer',
     hosted_projects: [3],
     bookmarked_projects: [2],
     country: 'USA',
@@ -102,3 +102,9 @@ const projectsData = [
     upload_id: 3
   }
 ]
+
+module.exports = {
+  accountsData,
+  uploadsData,
+  projectsData
+};

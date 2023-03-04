@@ -45,16 +45,15 @@
   background-color: rgb(224, 122, 95);
   height: 4vh;
   font-size: 2vh;
-  width: fit-content;
   cursor: pointer;
   outline: 0;
   border: none;
   border-radius: 16px;
-  width: 30%;
+  min-width: fit-content;
+  width: 125px;
   font-family: 'Lato', sans-serif;
   font-weight: bold;
   color: white;
-  min-width: fit-content;
 }
 
 .get-started-button:hover {
