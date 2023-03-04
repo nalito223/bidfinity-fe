@@ -1,19 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./CreateAccountForm.css"
+import { AppContext } from '../App/AppContext';
 
 type CreateAccountFormProps = {
   onClose: () => void;
+  handleCreateAccount: (email: string, password: string, userType: string) => void;
 };
 
-export default function CreateAccountForm({ onClose }: CreateAccountFormProps) {
+
+export default function CreateAccountForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [userType, setUserType] = useState("");
 
+  const { handleCreateAccount, closeModal } = useContext(AppContext);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Handle create account logic here
+    handleCreateAccount({ email, password, userType });
   };
 
   return (
@@ -66,7 +71,7 @@ export default function CreateAccountForm({ onClose }: CreateAccountFormProps) {
       >Create Account</button>
       <button
         type="button"
-        onClick={onClose}
+        onClick={closeModal}
         className="form-button"
       >
         Cancel

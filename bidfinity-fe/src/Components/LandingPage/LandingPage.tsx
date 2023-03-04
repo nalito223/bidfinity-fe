@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import "./LandingPage.css"
 // @ts-ignore
 import home from "../../images/home.png"
@@ -12,13 +12,14 @@ import check from "../../images/check.png"
 import clipboard from "../../images/clipboard.png"
 // @ts-ignore
 import search from "../../images/search.png"
+import { AppContext } from '../App/AppContext';
 
 interface LandingPageProps {
   openModal: () => void;
 }
 
-
-const LandingPage: React.FC<LandingPageProps> = ({ openModal }) => {
+const LandingPage: React.FC<LandingPageProps> = () => {
+  const { user, handleLogin, openModal, handleLogout, } = useContext(AppContext);
 
   return (
     <>
@@ -43,6 +44,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ openModal }) => {
           <h2>I'm a contractor</h2>
           <p>Post your projects and get the best prices on landscape materials</p>
           <button className="sign-up-button"
+            onClick={(e) => {
+              e.preventDefault();
+              openModal("signup");
+            }}
           >Sign up</button>
 
         </div>
@@ -52,7 +57,12 @@ const LandingPage: React.FC<LandingPageProps> = ({ openModal }) => {
           </div>
           <h2>I'm a vendor</h2>
           <p>Get details on all the latest project from your area and around the US.</p>
-          <button className="sign-up-button">Sign up</button>
+          <button className="sign-up-button"
+            onClick={(e) => {
+              e.preventDefault();
+              openModal("signup");
+            }}
+          >Sign up</button>
         </div>
 
 
