@@ -20,7 +20,7 @@ type Account = {
   email: string;
   password: string;
   phone_number: string;
-  account_type: 'buyer' | 'supplier';
+  account_type: string;
   hosted_projects: number[];
   bookmarked_projects: number[];
   country: string;
@@ -54,16 +54,11 @@ interface Project {
   upload_id: number;
 }
 
-
-
 const App: React.FC = () => {
   const [user, setUser] = useState<Account | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [modal, setModal] = useState("");
   const navigate = useNavigate();
-
-
-
   const handleLogin = (matchingAccount: Account) => {
     setUser(matchingAccount);
     navigate(`/user/${matchingAccount.id}`);
@@ -76,7 +71,7 @@ const App: React.FC = () => {
   }
 
   const handleCreateAccount = (email: string, password: string, userType: string) => {
-    const newUser = {
+    const newUser: Account = {
       id: Date.now(),
       first_name: 'Jane',
       last_name: 'Doe',
@@ -87,13 +82,16 @@ const App: React.FC = () => {
       hosted_projects: [],
       bookmarked_projects: [],
       country: 'USA',
-      business_name: null,
+      business_name: "",
       image: 'https://cdn-icons-png.flaticon.com/512/666/666201.png'
     }
 
     accountsData.push(newUser)
+    setUser(newUser);
+    navigate(`/user/${newUser.id}`);
     console.log(`New Account: ${email}`, accountsData)
   }
+
 
   const openModal = useCallback((selectedForm: string) => {
     if (selectedForm === "signup") {
@@ -117,27 +115,28 @@ const App: React.FC = () => {
 
 
   return (
-    <AppContext.Provider value={{
-      user,
-      handleLogin,
-      handleLogout,
-      openModal,
-      closeModal,
-      handleOpenModal,
-      handleCreateAccount,
-      accountsData,
-      // uploadsData,
-      // projectsData,
-    }}>
+    <AppContext.Provider
+      value={{
+        user,
+        // currentUser: user,
+        // setCurrentUser: setUser,
+        handleLogin,
+        handleLogout,
+        openModal,
+        closeModal,
+        handleOpenModal,
+        handleCreateAccount,
+        accountsData,
+      }}>
       <main className="App">
         <Nav />
         <Routes>
           <Route path="/"
             element={
               <>
-                <LandingPage openModal={handleOpenModal} />
+                <LandingPage />
                 {showModal && (
-                  <Modal onClose={closeModal}>
+                  <Modal>
                     {modal === "signup" && <CreateAccountForm />}
                     {modal === "login" && <LogInForm />}
                   </Modal>

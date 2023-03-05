@@ -3,6 +3,7 @@ import { AppContext } from '../App/AppContext';
 
 export default function LogInForm() {
   const [email, setEmail] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const [password, setPassword] = useState("");
   const { closeModal, accountsData, handleLogin } = useContext(AppContext);
 
@@ -14,9 +15,11 @@ export default function LogInForm() {
       console.log("User logged in successfully:", matchingAccount);
       closeModal()
       handleLogin(matchingAccount)
+      setErrorMessage("")
       // Set user in AppContext here using handleLogin() function
     } else {
       console.log("Invalid email or password");
+      setErrorMessage("Invalid email or password")
     }
   };
   return (
@@ -44,6 +47,7 @@ export default function LogInForm() {
           onChange={(e) => setPassword(e.target.value)}
         />
       </label>
+      {errorMessage && <p>{errorMessage}</p>}
       <button
         type="submit"
         className="form-button"
