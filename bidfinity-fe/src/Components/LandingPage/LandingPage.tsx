@@ -1,4 +1,5 @@
-import React, { useContext } from "react"
+import React, { useContext } from 'react';
+
 import "./LandingPage.css"
 // @ts-ignore
 import home from "../../images/home.png"
@@ -14,12 +15,12 @@ import clipboard from "../../images/clipboard.png"
 import search from "../../images/search.png"
 import { AppContext } from '../App/AppContext';
 
-interface LandingPageProps {
-  openModal: () => void;
-}
+// interface LandingPageProps {
+//   openModal: () => void;
+// }
 
-const LandingPage: React.FC<LandingPageProps> = () => {
-  const { user, handleLogin, openModal, handleLogout, } = useContext(AppContext);
+const LandingPage: React.FC = () => {
+  const { user, handleLogin, openModal, handleLogout, handleOpenModal } = useContext(AppContext);
 
   return (
     <>

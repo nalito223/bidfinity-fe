@@ -3,7 +3,6 @@ import { getDefaultNormalizer } from '@testing-library/react';
 import { createContext } from 'react';
 // const { accountsData, uploadsData, projectsData } = require('../fakeData/data');
 
-
 type Account = {
   id: number;
   first_name: string;
@@ -11,7 +10,7 @@ type Account = {
   email: string;
   password: string;
   phone_number: string;
-  account_type: 'buyer' | 'seller';
+  account_type: string;
   hosted_projects: number[];
   bookmarked_projects: number[];
   country: string;
@@ -19,27 +18,34 @@ type Account = {
   image?: string;
 };
 
-type AppContextType = {
+interface AppContextType {
   user: Account | null;
-  handleLogin: (newUser: Account) => void;
+  // currentUser: Account | null;
+  // setCurrentUser: React.Dispatch<React.SetStateAction<Account | null>>;
+  handleLogin: (matchingAccount: Account) => void;
   handleLogout: () => void;
   openModal: (selectedForm: string) => void;
   closeModal: () => void;
   handleOpenModal: () => void;
-  handleCreateAccount: (accountInfo: { email: string, password: string, userType: string }) => void;
-  accountsData: Account[]
-};
+  handleCreateAccount: (email: string, password: string, userType: string) => void;
+  accountsData: Account[];
+}
+
+
 
 export const AppContext = createContext<AppContextType>({
   user: null,
-  handleLogin: () => {},
-  handleLogout: () => {},
+  handleLogin: () => { },
+  handleLogout: () => { },
   openModal: () => { },
   closeModal: () => { },
   handleOpenModal: () => { },
   handleCreateAccount: () => { },
-  accountsData: []
+  accountsData: [],
+  // currentUser: null,
+  // setCurrentUser: () => {}
 });
+
 
 
 export default AppContext;

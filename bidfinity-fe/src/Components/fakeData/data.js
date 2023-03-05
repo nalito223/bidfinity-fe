@@ -20,7 +20,7 @@ const accountsData = [
     email: 'janedoe@example.com',
     password: 'password456',
     phone_number: '555-555-5556',
-    account_type: 'seller',
+    account_type: 'supplier',
     hosted_projects: [2],
     bookmarked_projects: [1],
     country: 'USA',

@@ -9,6 +9,7 @@ import CreateAccountForm from "../CreateAccountForm/CreateAccountForm"
 import LogInForm from "../LogInForm/LogInForm"
 import { AppContext } from "./AppContext";
 import Buyer from "../Buyer/Buyer"
+import Supplier from "../Supplier/Supplier"
 const { accountsData, uploadsData, projectsData } = require('../fakeData/data');
 
 
@@ -19,7 +20,7 @@ type Account = {
   email: string;
   password: string;
   phone_number: string;
-  account_type: 'buyer' | 'seller';
+  account_type: string;
   hosted_projects: number[];
   bookmarked_projects: number[];
   country: string;
@@ -53,16 +54,11 @@ interface Project {
   upload_id: number;
 }
 
-
-
 const App: React.FC = () => {
   const [user, setUser] = useState<Account | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [modal, setModal] = useState("");
   const navigate = useNavigate();
-
-
-
   const handleLogin = (matchingAccount: Account) => {
     setUser(matchingAccount);
     navigate(`/user/${matchingAccount.id}`);
@@ -74,9 +70,28 @@ const App: React.FC = () => {
     navigate(`/`);
   }
 
-  const handleCreateAccount = () => {
-    console.log("made it to handle create account")
+  const handleCreateAccount = (email: string, password: string, userType: string) => {
+    const newUser: Account = {
+      id: Date.now(),
+      first_name: 'Jane',
+      last_name: 'Doe',
+      email: email,
+      password: password,
+      phone_number: '555-555-5556',
+      account_type: userType,
+      hosted_projects: [],
+      bookmarked_projects: [],
+      country: 'USA',
+      business_name: "",
+      image: 'https://cdn-icons-png.flaticon.com/512/666/666201.png'
+    }
+
+    accountsData.push(newUser)
+    setUser(newUser);
+    navigate(`/user/${newUser.id}`);
+    console.log(`New Account: ${email}`, accountsData)
   }
+
 
   const openModal = useCallback((selectedForm: string) => {
     if (selectedForm === "signup") {
@@ -100,27 +115,28 @@ const App: React.FC = () => {
 
 
   return (
-    <AppContext.Provider value={{
-      user,
-      handleLogin,
-      handleLogout,
-      openModal,
-      closeModal,
-      handleOpenModal,
-      handleCreateAccount,
-      accountsData,
-      // uploadsData,
-      // projectsData,
-    }}>
+    <AppContext.Provider
+      value={{
+        user,
+        // currentUser: user,
+        // setCurrentUser: setUser,
+        handleLogin,
+        handleLogout,
+        openModal,
+        closeModal,
+        handleOpenModal,
+        handleCreateAccount,
+        accountsData,
+      }}>
       <main className="App">
         <Nav />
         <Routes>
           <Route path="/"
             element={
               <>
-                <LandingPage openModal={handleOpenModal} />
+                <LandingPage />
                 {showModal && (
-                  <Modal onClose={closeModal}>
+                  <Modal>
                     {modal === "signup" && <CreateAccountForm />}
                     {modal === "login" && <LogInForm />}
                   </Modal>
@@ -129,12 +145,17 @@ const App: React.FC = () => {
               </>
             }
           />
-          {user &&
-          <Route path="/user/:id"
-            element={
-              <Buyer />
-            }
-          />}
+          {user && user.account_type === "buyer" &&
+            <Route path={`/user/${user.id}`}
+              element={<Buyer />}
+            />}
+          <Route path="*" element={<h2>404: Page not found</h2>} />
+
+          {user && user.account_type === "supplier" &&
+            <Route path={`/user/${user.id}`}
+              element={<Supplier />}
+            />}
+          <Route path="*" element={<h2>404: Page not found</h2>} />
         </Routes>
       </main>
     </AppContext.Provider>

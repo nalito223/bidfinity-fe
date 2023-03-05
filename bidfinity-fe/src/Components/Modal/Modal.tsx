@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext, ReactNode } from "react";
 import "./Modal.css"
+import { AppContext } from '../App/AppContext';
 
 type ModalProps = {
-  onClose: () => void;
-  children: React.ReactNode;
-};
+  children: ReactNode;
+}
 
-export default function Modal({ onClose, children }: ModalProps) {
+export default function Modal({children}: ModalProps) {
+  const { closeModal } = useContext(AppContext);
   return (
     <div className="modal">
       <div className="modal-content">
-        <span className="close" onClick={onClose}>
+        <span className="close" onClick={closeModal}>
           &times;
         </span>
         {children}
