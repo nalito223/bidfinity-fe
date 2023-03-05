@@ -75,8 +75,24 @@ const App: React.FC = () => {
     navigate(`/`);
   }
 
-  const handleCreateAccount = () => {
-    console.log("made it to handle create account")
+  const handleCreateAccount = (email: string, password: string, userType: string) => {
+    const newUser = {
+      id: Date.now(),
+      first_name: 'Jane',
+      last_name: 'Doe',
+      email: email,
+      password: password,
+      phone_number: '555-555-5556',
+      account_type: userType,
+      hosted_projects: [],
+      bookmarked_projects: [],
+      country: 'USA',
+      business_name: null,
+      image: 'https://cdn-icons-png.flaticon.com/512/666/666201.png'
+    }
+
+    accountsData.push(newUser)
+    console.log(`New Account: ${email}`, accountsData)
   }
 
   const openModal = useCallback((selectedForm: string) => {
@@ -132,13 +148,13 @@ const App: React.FC = () => {
           />
           {user && user.account_type === "buyer" &&
             <Route path={`/user/${user.id}`}
-              element={ <Buyer />}
+              element={<Buyer />}
             />}
           <Route path="*" element={<h2>404: Page not found</h2>} />
 
           {user && user.account_type === "supplier" &&
             <Route path={`/user/${user.id}`}
-              element={ <Supplier />}
+              element={<Supplier />}
             />}
           <Route path="*" element={<h2>404: Page not found</h2>} />
         </Routes>

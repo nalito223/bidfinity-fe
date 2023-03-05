@@ -1,4 +1,5 @@
-import React, { useContext } from "react"
+import React, { useContext } from 'react';
+
 import "./LandingPage.css"
 // @ts-ignore
 import home from "../../images/home.png"

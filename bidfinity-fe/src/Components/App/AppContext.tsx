@@ -26,7 +26,8 @@ type AppContextType = {
   openModal: (selectedForm: string) => void;
   closeModal: () => void;
   handleOpenModal: () => void;
-  handleCreateAccount: (accountInfo: { email: string, password: string, userType: string }) => void;
+  handleCreateAccount: (email: string, password: string, userType: string) => void;
+
   accountsData: Account[]
 };
 
