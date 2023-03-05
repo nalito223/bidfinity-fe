@@ -108,3 +108,39 @@ module.exports = {
   uploadsData,
   projectsData
 };
+
+
+// Schema for back end
+
+// CREATE TABLE accounts (
+//   id SERIAL PRIMARY KEY,
+//   first_name VARCHAR(255) NOT NULL,
+//   last_name VARCHAR(255) NOT NULL,
+//   email VARCHAR(255) NOT NULL UNIQUE,
+//   password VARCHAR(255) NOT NULL,
+//   phone_number VARCHAR(20),
+//   account_type VARCHAR(50),
+//   hosted_projects INTEGER[],
+//   bookmarked_projects INTEGER[],
+//   country VARCHAR(255),
+//   business_name VARCHAR(255),
+//   image VARCHAR(255)
+// );
+// CREATE TABLE projects (
+//   id SERIAL PRIMARY KEY,
+//   project_title VARCHAR(255) NOT NULL,
+//   created_date DATE NOT NULL,
+//   location VARCHAR(255),
+//   project_summary TEXT,
+//   status VARCHAR(50),
+//   contact_information VARCHAR(255),
+//   upload_id INTEGER REFERENCES uploads(id)
+// );
+// CREATE TABLE uploads (
+//   id SERIAL PRIMARY KEY,
+//   filename VARCHAR(255) NOT NULL,
+//   filesize INTEGER NOT NULL,
+//   mimetype VARCHAR(255) NOT NULL,
+//   s3_object_key VARCHAR(255) NOT NULL,
+//   uploaded_at TIMESTAMP NOT NULL DEFAULT NOW()
+// );
