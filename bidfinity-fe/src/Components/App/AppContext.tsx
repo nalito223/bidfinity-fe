@@ -11,7 +11,7 @@ type Account = {
   email: string;
   password: string;
   phone_number: string;
-  account_type: 'buyer' | 'seller';
+  account_type: 'buyer' | 'supplier';
   hosted_projects: number[];
   bookmarked_projects: number[];
   country: string;

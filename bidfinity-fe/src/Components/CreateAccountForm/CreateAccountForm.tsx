@@ -62,7 +62,7 @@ export default function CreateAccountForm() {
         >
           <option className="form-option" value="">I am a...</option>
           <option className="form-option" value="buyer">Buyer</option>
-          <option className="form-option" value="seller">Seller</option>
+          <option className="form-option" value="supplier">Supplier</option>
         </select>
       </label>
       <button

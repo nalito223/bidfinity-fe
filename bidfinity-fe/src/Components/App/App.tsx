@@ -9,6 +9,7 @@ import CreateAccountForm from "../CreateAccountForm/CreateAccountForm"
 import LogInForm from "../LogInForm/LogInForm"
 import { AppContext } from "./AppContext";
 import Buyer from "../Buyer/Buyer"
+import Supplier from "../Supplier/Supplier"
 const { accountsData, uploadsData, projectsData } = require('../fakeData/data');
 
 
@@ -19,7 +20,7 @@ type Account = {
   email: string;
   password: string;
   phone_number: string;
-  account_type: 'buyer' | 'seller';
+  account_type: 'buyer' | 'supplier';
   hosted_projects: number[];
   bookmarked_projects: number[];
   country: string;
@@ -129,12 +130,17 @@ const App: React.FC = () => {
               </>
             }
           />
-          {user &&
-          <Route path="/user/:id"
-            element={
-              <Buyer />
-            }
-          />}
+          {user && user.account_type === "buyer" &&
+            <Route path={`/user/${user.id}`}
+              element={ <Buyer />}
+            />}
+          <Route path="*" element={<h2>404: Page not found</h2>} />
+
+          {user && user.account_type === "supplier" &&
+            <Route path={`/user/${user.id}`}
+              element={ <Supplier />}
+            />}
+          <Route path="*" element={<h2>404: Page not found</h2>} />
         </Routes>
       </main>
     </AppContext.Provider>
