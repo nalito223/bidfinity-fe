@@ -10,6 +10,7 @@ import LogInForm from "../LogInForm/LogInForm"
 import { AppContext } from "./AppContext";
 import Buyer from "../Buyer/Buyer"
 import Supplier from "../Supplier/Supplier"
+// import Map from "../Map/Map"
 const { accountsData, uploadsData, projectsData } = require('../fakeData/data');
 
 
@@ -55,7 +56,8 @@ interface Project {
 }
 
 const App: React.FC = () => {
-  const [user, setUser] = useState<Account | null>(null);
+  // const [user, setUser] = useState<Account | null>(null);
+  const [user, setUser] = useState<Account | null>(accountsData[0]);
   const [showModal, setShowModal] = useState(false);
   const [modal, setModal] = useState("");
   const navigate = useNavigate();
@@ -127,6 +129,7 @@ const App: React.FC = () => {
         handleOpenModal,
         handleCreateAccount,
         accountsData,
+        projectsData
       }}>
       <main className="App">
         <Nav />
@@ -145,17 +148,42 @@ const App: React.FC = () => {
               </>
             }
           />
+
+          {/* <Route path="/user/:id"
+            element={
+              user && user.account_type === "buyer" ? <Buyer /> : null
+            }
+          /> */}
+
+          {/* 
+          <Route path="/user/:id"
+            element={
+              user && user.account_type === "supplier" ? <Supplier /> : null
+            }
+          /> */}
+
           {user && user.account_type === "buyer" &&
             <Route path={`/user/${user.id}`}
               element={<Buyer />}
             />}
-          <Route path="*" element={<h2>404: Page not found</h2>} />
+
 
           {user && user.account_type === "supplier" &&
             <Route path={`/user/${user.id}`}
               element={<Supplier />}
             />}
+
+          {/* {user && user.account_type === "supplier" &&
+            <Route path={`/user/${user.id}`}>
+              <>
+                <Map />
+                <Supplier />
+              </>
+            </Route>
+          } */}
+
           <Route path="*" element={<h2>404: Page not found</h2>} />
+
         </Routes>
       </main>
     </AppContext.Provider>

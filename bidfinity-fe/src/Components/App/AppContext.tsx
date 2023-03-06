@@ -1,7 +1,4 @@
-// AppContext.tsx
-import { getDefaultNormalizer } from '@testing-library/react';
 import { createContext } from 'react';
-// const { accountsData, uploadsData, projectsData } = require('../fakeData/data');
 
 type Account = {
   id: number;
@@ -20,8 +17,6 @@ type Account = {
 
 interface AppContextType {
   user: Account | null;
-  // currentUser: Account | null;
-  // setCurrentUser: React.Dispatch<React.SetStateAction<Account | null>>;
   handleLogin: (matchingAccount: Account) => void;
   handleLogout: () => void;
   openModal: (selectedForm: string) => void;
@@ -29,9 +24,17 @@ interface AppContextType {
   handleOpenModal: () => void;
   handleCreateAccount: (email: string, password: string, userType: string) => void;
   accountsData: Account[];
+  projectsData: {
+    id: number;
+    project_title: string;
+    created_date: string;
+    location: string;
+    project_summary: string;
+    status: string;
+    contact_information: string;
+    upload_id: number;
+  }[];
 }
-
-
 
 export const AppContext = createContext<AppContextType>({
   user: null,
@@ -42,10 +45,7 @@ export const AppContext = createContext<AppContextType>({
   handleOpenModal: () => { },
   handleCreateAccount: () => { },
   accountsData: [],
-  // currentUser: null,
-  // setCurrentUser: () => {}
+  projectsData: [],
 });
-
-
 
 export default AppContext;
