@@ -13,10 +13,13 @@
 .form-input,
 .form-select,
 .form-button {
-  font-size: 2.5vh;
+  font-size: 2vh;
   color: #51536b;
 }
 
+.margin-above {
+  margin-top: 5%;
+}
 
 /* .form-option {
   font-size: 5vh;
@@ -24,7 +27,7 @@
 
 .form-input::placeholder,
 .form-select::placeholder {
-  font-size: 2.5vh;
+  font-size: 2vh;
 }
 
 .form-label {
@@ -41,7 +44,7 @@
   border-radius: 5px;
   border: 1px solid #ccc;
   height: 4vh;
-  font-size: 2.5vh;
+  font-size: 2vh;
 }
 
 .form-button {

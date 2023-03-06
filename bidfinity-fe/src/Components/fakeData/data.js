@@ -7,7 +7,7 @@ const accountsData = [
     password: 'password123',
     phone_number: '555-555-5555',
     account_type: 'buyer',
-    hosted_projects: [1],
+    hosted_projects: [7, 2],
     bookmarked_projects: [2],
     country: 'USA',
     business_name: 'Acme Corporation',
@@ -21,7 +21,7 @@ const accountsData = [
     password: 'password456',
     phone_number: '555-555-5556',
     account_type: 'supplier',
-    hosted_projects: [2],
+    hosted_projects: [1, 3],
     bookmarked_projects: [1],
     country: 'USA',
     business_name: null,
@@ -35,7 +35,7 @@ const accountsData = [
     password: 'password789',
     phone_number: '555-555-5557',
     account_type: 'buyer',
-    hosted_projects: [3],
+    hosted_projects: [4, 5, 6],
     bookmarked_projects: [2],
     country: 'USA',
     business_name: 'XYZ Corporation',
@@ -72,34 +72,74 @@ const uploadsData = [
 
 const projectsData = [
   {
-    id: 1,
-    project_title: 'Build a new website',
-    created_date: '2022-01-01',
-    location: '10001',
-    project_summary: 'We need a new website for our business',
-    status: 'in progress',
-    contact_information: 'johndoe@example.com',
-    upload_id: 1
+  id: 1,
+  project_title: 'Design and install new garden beds',
+  created_date: '2022-02-01',
+  location: '90210',
+  project_summary: 'Looking for someone to help design and install new garden beds in our backyard. We would like a mix of perennials and annuals.',
+  status: 'open',
+  contact_information: 'janedoe@example.com',
+  upload_id: 4
   },
   {
-    id: 2,
-    project_title: 'Launch a marketing campaign',
-    created_date: '2022-01-02',
-    location: '90001',
-    project_summary: 'We want to reach a new audience',
-    status: 'completed',
-    contact_information: 'janedoe@example.com',
-    upload_id: 2
+  id: 2,
+  project_title: 'Install new paver patio',
+  created_date: '2022-02-03',
+  location: '10016',
+  project_summary: 'We need a new patio installed in our backyard. We want to use pavers and would like it to be large enough for a table and chairs.',
+  status: 'open',
+  contact_information: 'johndoe@example.com',
+  upload_id: 5
   },
   {
-    id: 3,
-    project_title: 'Develop a mobile app',
-    created_date: '2022-01-03',
-    location: '60007',
-    project_summary: 'We need an app for our customers',
-    status: 'in progress',
-    contact_information: 'bob@example.com',
-    upload_id: 3
+  id: 3,
+  project_title: 'Build a retaining wall',
+  created_date: '2022-02-05',
+  location: '60611',
+  project_summary: 'We need a retaining wall built in our front yard to help with erosion control. We are looking for someone experienced in building retaining walls with natural stone.',
+  status: 'open',
+  contact_information: 'bob@example.com',
+  upload_id: 6
+  },
+  {
+  id: 4,
+  project_title: 'Install new irrigation system',
+  created_date: '2022-02-07',
+  location: '94110',
+  project_summary: 'We need a new irrigation system installed in our front yard. We have a mix of grass and plants and want to make sure everything is getting the right amount of water.',
+  status: 'open',
+  contact_information: 'janedoe@example.com',
+  upload_id: 7
+  },
+  {
+  id: 5,
+  project_title: 'Add new plants to front yard',
+  created_date: '2022-02-10',
+  location: '75201',
+  project_summary: 'Looking for someone to help us add new plants to our front yard. We want to add some color and texture and are open to suggestions!',
+  status: 'open',
+  contact_information: 'johndoe@example.com',
+  upload_id: 8
+  },
+  {
+  id: 6,
+  project_title: 'Build a pergola',
+  created_date: '2022-02-12',
+  location: '90024',
+  project_summary: 'We would like to add a pergola to our backyard to provide some shade. We would like it to be large enough to fit a table and chairs underneath.',
+  status: 'open',
+  contact_information: 'bob@example.com',
+  upload_id: 9
+  },
+  {
+  id: 7,
+  project_title: 'Install new fence',
+  created_date: '2022-02-15',
+  location: '60657',
+  project_summary: 'We need a new fence installed in our backyard. We want a wooden fence that provides some privacy.',
+  status: 'open',
+  contact_information: 'janedoe@example.com',
+  upload_id: 10
   }
 ]
 
