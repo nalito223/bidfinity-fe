@@ -45,7 +45,7 @@ const Nav: React.FC = () => {
             <NavLink to={`/user/${user.id}`}>
             <button
               className="log-in-button"
-            >Projects</button>
+            >Dashboard</button>
             </NavLink>
             <button
               className="sign-up-button"
