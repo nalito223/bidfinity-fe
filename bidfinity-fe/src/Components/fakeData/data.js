@@ -77,7 +77,7 @@ const projectsData = [
   created_date: '2022-02-01',
   location: '90210',
   project_summary: 'Looking for someone to help design and install new garden beds in our backyard. We would like a mix of perennials and annuals.',
-  status: 'open',
+  status: 'closed',
   contact_information: 'janedoe@example.com',
   upload_id: 4
   },
@@ -97,7 +97,7 @@ const projectsData = [
   created_date: '2022-02-05',
   location: '60611',
   project_summary: 'We need a retaining wall built in our front yard to help with erosion control. We are looking for someone experienced in building retaining walls with natural stone.',
-  status: 'open',
+  status: 'closed',
   contact_information: 'bob@example.com',
   upload_id: 6
   },
@@ -117,7 +117,7 @@ const projectsData = [
   created_date: '2022-02-10',
   location: '75201',
   project_summary: 'Looking for someone to help us add new plants to our front yard. We want to add some color and texture and are open to suggestions!',
-  status: 'open',
+  status: 'closed',
   contact_information: 'johndoe@example.com',
   upload_id: 8
   },
@@ -137,7 +137,7 @@ const projectsData = [
   created_date: '2022-02-15',
   location: '60657',
   project_summary: 'We need a new fence installed in our backyard. We want a wooden fence that provides some privacy.',
-  status: 'open',
+  status: 'closed',
   contact_information: 'janedoe@example.com',
   upload_id: 10
   }

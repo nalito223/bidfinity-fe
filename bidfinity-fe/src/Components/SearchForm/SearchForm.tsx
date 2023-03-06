@@ -54,9 +54,9 @@ const SearchForm: React.FC = () => {
         <input type="text" id="location-search" name="location" placeholder="Enter a location" className="form-input" />
       </div>
       <div className="search-field">
-        <label htmlFor="distance-filter" className="form-label margin-above" >Within:</label>
+        <label htmlFor="distance-filter" className="form-label margin-above" defaultValue={"10"}>Within:</label>
         <select id="distance-filter" name="distance" className="form-select">
-          <option value="10" selected>10 miles</option>
+          <option value="10">10 miles</option>
           <option value="50">50 miles</option>
           <option value="100">100 miles</option>
           <option value="500">500 miles</option>

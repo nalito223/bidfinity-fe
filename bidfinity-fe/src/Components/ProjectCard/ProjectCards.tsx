@@ -28,7 +28,7 @@ const ProjectCards = () => {
             <h3>{project.project_title} </h3>
             <p>{project.project_summary}</p>
             <p>{project.location + " | " + project.created_date} </p>
-            <p><mark style={{ backgroundColor: project.status === "completed" ? "RGB(204, 204, 204, 0.5)" : "rgb(30, 164, 116, 0.2)" }}>{project.status}</mark></p>
+            <p><mark style={{ backgroundColor: project.status === "closed" ? "RGB(204, 204, 204, 0.5)" : "rgb(30, 164, 116, 0.2)" }}>{project.status}</mark></p>
           </div>
 
           <div className="card-right">
