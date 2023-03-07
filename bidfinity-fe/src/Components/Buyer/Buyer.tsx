@@ -3,8 +3,8 @@ import "./Buyer.css"
 import Map from "../Map/Map"
 import userEvent from "@testing-library/user-event";
 import { AppContext } from '../App/AppContext';
-import ProjectCards from "../ProjectCard/ProjectCards";
-import SearchForm from "../SearchForm/SearchForm"
+import ProjectCards from "../ProjectCards/ProjectCards";
+// import SearchForm from "../SearchForm/SearchForm"
 // @ts-ignore
 import edit from "../../images/edit.png"
 
@@ -16,7 +16,7 @@ const Buyer: React.FC = () => {
 
         <div className="left-column">
           <center><h2>Search all projects</h2></center>
-          <SearchForm/>
+          {/* <SearchForm/> */}
           <button className="get-started-button margin-above">My projects</button>
         </div>
 

@@ -1,65 +1,54 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
+import L from 'leaflet';
+import { LatLngExpression } from 'leaflet';
 import { AppContext } from '../App/AppContext';
-import L, { LatLngExpression } from 'leaflet';
 
 interface Project {
   id: number;
   project_title: string;
   created_date: string;
-  location: string;
+  location: { lat: number; lng: number };
   project_summary: string;
   status: string;
   contact_information: string;
   upload_id: number;
 }
 
+
 const Map: React.FC = () => {
   const { projectsData } = useContext(AppContext);
 
   useEffect(() => {
-    // Create a map object with the specified coordinates
-    // const map = L.map('map').setView([40.7128, -74.006], 13);
-   
-  const map = L.map('map').setView([37.0902, -95.7129], 4);
+    const map = L.map('map').setView([37.0902, -95.7129], 4);
 
-    // Add a tile layer from OpenStreetMap
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: 'Map data &copy; OpenStreetMap contributors',
-      maxZoom: 18
+      maxZoom: 18,
     }).addTo(map);
 
-    // Iterate through the data and add a marker for each location
-    projectsData.forEach((project: Project) => {
-      // Use the zip code as the marker location
-      const location = project.location;
-
-      // Convert the zip code to coordinates using the OpenStreetMap Nominatim API
-      const getCoordinates = async (zipcode: string): Promise<LatLngExpression> => {
-        const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${zipcode}`);
+    projectsData.forEach((project: Project, index: number, array: Project[]) => {
+      const { lat, lng } = project.location;
+    
+      const getCoordinates = async (lat: number, lng: number): Promise<LatLngExpression> => {
+        const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`);
         const data = await response.json();
-        return [data[0].lat, data[0].lon];
-      }
-      
-      // Create a marker and add it to the map
-      getCoordinates(location).then((coordinates: LatLngExpression) => {
+        return [data.lat, data.lon];
+      };
+    
+      getCoordinates(lat, lng).then((coordinates: LatLngExpression) => {
         const marker = L.marker(coordinates).addTo(map);
-
-        // Add a popup with a hyperlink to the Wikipedia page for the location
-        marker.bindPopup(`<a href="https://en.wikipedia.org/wiki/${location}">Wikipedia page for ${location}</a>`);
+        marker.bindPopup(`<p>${project.project_title}</p>`);
+    
+        // marker.bindPopup(`<a href="https://en.wikipedia.org/wiki/${project.location}">Wikipedia page for ${project.location}</a>`);
       });
     });
 
-    // Clean up when the component unmounts
     return () => {
       map.remove();
-    }
+    };
   }, [projectsData]);
 
-  return (
-    
-    <div id="map" style={{ height: '100%', width: '100%' }}></div>
-
-  );
-}
+  return <div id="map" style={{ height: '100%', width: '100%' }}></div>;
+};
 
 export default Map;

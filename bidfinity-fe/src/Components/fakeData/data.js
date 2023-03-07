@@ -39,7 +39,7 @@ const accountsData = [
     bookmarked_projects: [2],
     country: 'USA',
     business_name: 'XYZ Corporation',
-    image: 'https://example.com/profile.jpg'
+    image: 'https://cdn-icons-png.flaticon.com/512/666/666201.png'
   }
 ];
 
@@ -75,7 +75,7 @@ const projectsData = [
   id: 1,
   project_title: 'Design and install new garden beds',
   created_date: '2022-02-01',
-  location: '90210',
+  location: {lat: 34.103003, lng: -118.410468},
   project_summary: 'Looking for someone to help design and install new garden beds in our backyard. We would like a mix of perennials and annuals.',
   status: 'closed',
   contact_information: 'janedoe@example.com',
@@ -85,7 +85,7 @@ const projectsData = [
   id: 2,
   project_title: 'Install new paver patio',
   created_date: '2022-02-03',
-  location: '10016',
+  location: {lat: 40.744472, lng: -73.983169},
   project_summary: 'We need a new patio installed in our backyard. We want to use pavers and would like it to be large enough for a table and chairs.',
   status: 'open',
   contact_information: 'johndoe@example.com',
@@ -95,7 +95,7 @@ const projectsData = [
   id: 3,
   project_title: 'Build a retaining wall',
   created_date: '2022-02-05',
-  location: '60611',
+  location: {lat: 41.896414, lng: -87.624348},
   project_summary: 'We need a retaining wall built in our front yard to help with erosion control. We are looking for someone experienced in building retaining walls with natural stone.',
   status: 'closed',
   contact_information: 'bob@example.com',
@@ -105,7 +105,7 @@ const projectsData = [
   id: 4,
   project_title: 'Install new irrigation system',
   created_date: '2022-02-07',
-  location: '94110',
+  location: {lat: 37.752723, lng: -122.410886},
   project_summary: 'We need a new irrigation system installed in our front yard. We have a mix of grass and plants and want to make sure everything is getting the right amount of water.',
   status: 'open',
   contact_information: 'janedoe@example.com',
@@ -115,7 +115,7 @@ const projectsData = [
   id: 5,
   project_title: 'Add new plants to front yard',
   created_date: '2022-02-10',
-  location: '75201',
+  location: {lat: 32.787631, lng: -96.801305},
   project_summary: 'Looking for someone to help us add new plants to our front yard. We want to add some color and texture and are open to suggestions!',
   status: 'closed',
   contact_information: 'johndoe@example.com',
@@ -125,7 +125,7 @@ const projectsData = [
   id: 6,
   project_title: 'Build a pergola',
   created_date: '2022-02-12',
-  location: '90024',
+  location: {lat: 34.068921, lng: -118.445181},
   project_summary: 'We would like to add a pergola to our backyard to provide some shade. We would like it to be large enough to fit a table and chairs underneath.',
   status: 'open',
   contact_information: 'bob@example.com',
@@ -135,10 +135,10 @@ const projectsData = [
   id: 7,
   project_title: 'Install new fence',
   created_date: '2022-02-15',
-  location: '60657',
-  project_summary: 'We need a new fence installed in our backyard. We want a wooden fence that provides some privacy.',
-  status: 'closed',
-  contact_information: 'janedoe@example.com',
+  location: {lat: 41.939954, lng: -87.655616},
+  project_summary: 'We need a new fence installed in our backyard. We want a wooden fence.', 
+  status: 'open',
+  contact_information: 'bobjeff@example.com',
   upload_id: 10
   }
 ]
@@ -170,7 +170,8 @@ module.exports = {
 //   id SERIAL PRIMARY KEY,
 //   project_title VARCHAR(255) NOT NULL,
 //   created_date DATE NOT NULL,
-//   location VARCHAR(255),
+//   latitude FLOAT,
+//   longitude FLOAT,
 //   project_summary TEXT,
 //   status VARCHAR(50),
 //   contact_information VARCHAR(255),

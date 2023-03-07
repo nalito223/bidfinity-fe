@@ -10,6 +10,7 @@ import LogInForm from "../LogInForm/LogInForm"
 import { AppContext } from "./AppContext";
 import Buyer from "../Buyer/Buyer"
 import Supplier from "../Supplier/Supplier"
+import EditProject from "../EditProject/EditProject";
 // import Map from "../Map/Map"
 const { accountsData, uploadsData, projectsData } = require('../fakeData/data');
 
@@ -38,34 +39,31 @@ interface Upload {
   uploaded_at: string;
 }
 
-// interface AppContextType {
-//   accounts: Account[];
-//   uploads: Upload[];
-//   projects: Project[];
-// }
-
 interface Project {
   id: number;
   project_title: string;
   created_date: string;
-  location: string;
+  location: { lat: number; lng: number };
   project_summary: string;
-  status: 'in progress' | 'completed';
+  status: string;
   contact_information: string;
   upload_id: number;
 }
 
 const App: React.FC = () => {
   // const [user, setUser] = useState<Account | null>(null);
-  const [user, setUser] = useState<Account | null>(accountsData[0]);
+  const [user, setUser] = useState<Account | null>(accountsData[2]);
   const [showModal, setShowModal] = useState(false);
   const [modal, setModal] = useState("");
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
   const navigate = useNavigate();
   const handleLogin = (matchingAccount: Account) => {
     setUser(matchingAccount);
     navigate(`/user/${matchingAccount.id}`);
     console.log("made it to handlelogin", user)
   };
+
 
   const handleLogout = () => {
     setUser(null)
@@ -128,8 +126,10 @@ const App: React.FC = () => {
         closeModal,
         handleOpenModal,
         handleCreateAccount,
+        setSelectedProject,
         accountsData,
-        projectsData
+        projectsData,
+        selectedProject,
       }}>
       <main className="App">
         <Nav />
@@ -162,16 +162,25 @@ const App: React.FC = () => {
             }
           /> */}
 
-          {user && user.account_type === "buyer" &&
-            <Route path={`/user/${user.id}`}
-              element={<Buyer />}
-            />}
+          <Route
+            path={`/user/${user?.id}`}
+            element={
+              <>
+                <Buyer />
+                {showModal && (
+                  <Modal>
+                   {selectedProject && <EditProject />}
+                  </Modal>
+                )}
+              </>
+            }
+          />
 
 
-          {user && user.account_type === "supplier" &&
+          {/* {user && user.account_type === "supplier" &&
             <Route path={`/user/${user.id}`}
               element={<Supplier />}
-            />}
+            />} */}
 
           {/* {user && user.account_type === "supplier" &&
             <Route path={`/user/${user.id}`}>
