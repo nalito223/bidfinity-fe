@@ -33,7 +33,8 @@ const ProjectCards = () => {
           </div>
 
           <div className="card-right">
-            {user?.hosted_projects.includes(project.id) &&
+            {user?.hosted_projects.includes(project.id)
+              ?
               <img
                 src={edit}
                 alt="Edit icon"
@@ -43,9 +44,10 @@ const ProjectCards = () => {
                   setSelectedProject(project)
                   openModal("edit project");
                 }}
-
-              />}
-            <button className="sign-up-button">View detail</button>
+              />
+              :
+              <button className="sign-up-button">View detail</button>
+            }
           </div>
         </div>
       ))}
