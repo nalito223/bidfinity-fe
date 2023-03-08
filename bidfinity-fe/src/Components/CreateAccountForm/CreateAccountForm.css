@@ -45,6 +45,9 @@
   border: 1px solid #ccc;
   height: 4vh;
   font-size: 2vh;
+  width: 100%;
+  /* width: max-content; */
+
 }
 
 .form-button {
@@ -88,4 +91,9 @@
   margin-top: 5px;
   padding: 5px;
   border-radius: 5px;
+}
+
+.add-width {
+  /* width: 100%; */
+  /* background-color: red; */
 }

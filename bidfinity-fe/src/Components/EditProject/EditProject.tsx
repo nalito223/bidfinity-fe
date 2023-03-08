@@ -39,7 +39,7 @@ const EditProject: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="form-form">
       <center><h2>Edit project</h2></center>
       <label className="form-label">
         Project Title:

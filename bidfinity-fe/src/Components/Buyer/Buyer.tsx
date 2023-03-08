@@ -9,7 +9,7 @@ import SearchForm from "../SearchForm/SearchForm"
 import edit from "../../images/edit.png"
 
 const Buyer: React.FC = () => {
-  const { user } = useContext(AppContext);
+  const { user, openModal } = useContext(AppContext);
   return (
     <div className="buyer-container">
       <div className="buyer-secondary-container">
@@ -36,7 +36,14 @@ const Buyer: React.FC = () => {
               <img src={user?.image} alt="Avatar" className="avatar-image" />
             </div>
           </center>
-          <center><h2>My profile <img src={edit} alt="Edit icon" className="edit-icon" /></h2></center>
+          <center><h2>My profile <img 
+          src={edit} alt="Edit icon" 
+          className="edit-icon" 
+          onClick={(e) => {
+            e.preventDefault();
+            openModal("edit profile");
+          }}
+          /></h2></center>
 
           {/* <p><i>
             This profile is not visible to the public.

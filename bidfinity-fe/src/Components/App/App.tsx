@@ -1,5 +1,6 @@
 import { NavLink, Route, Routes, useNavigate } from "react-router-dom"
 import React, { useState, useCallback } from "react";
+import { AppContext } from "./AppContext";
 import './App.css'
 import Nav from '../Nav/Nav'
 import LandingPage from "../LandingPage/LandingPage"
@@ -7,10 +8,11 @@ import Footer from "../Footer/Footer"
 import Modal from "../Modal/Modal"
 import CreateAccountForm from "../CreateAccountForm/CreateAccountForm"
 import LogInForm from "../LogInForm/LogInForm"
-import { AppContext } from "./AppContext";
 import Buyer from "../Buyer/Buyer"
 import Supplier from "../Supplier/Supplier"
 import EditProject from "../EditProject/EditProject";
+import ProjectDetail from "../ProjectDetail/ProjectDetail";
+import EditProfile from "../EditProfile/EditProfile";
 // import Map from "../Map/Map"
 const { accountsData, uploadsData, projectsData } = require('../fakeData/data');
 
@@ -43,7 +45,7 @@ interface Project {
   id: number;
   project_title: string;
   created_date: string;
-  location: { lat: number; lng: number };
+  location: { lat: number; lng: number; address: string; };
   project_summary: string;
   status: string;
   contact_information: string;
@@ -98,7 +100,13 @@ const App: React.FC = () => {
       setModal("signup")
     } else if (selectedForm === "login") {
       setModal("login")
-    }
+    } else if (selectedForm === "project detail") {
+      setModal("project detail")
+    } else if (selectedForm === "edit project") {
+      setModal("edit project")
+    } else if (selectedForm === "edit profile") {
+      setModal('edit profile')
+    } 
 
     setShowModal(true);
 
@@ -169,7 +177,9 @@ const App: React.FC = () => {
                 <Buyer />
                 {showModal && (
                   <Modal>
-                   {selectedProject && <EditProject />}
+                   {selectedProject && modal === "edit project" && <EditProject />}
+                   {selectedProject && modal === "project detail" &&<ProjectDetail />}
+                   {selectedProject && modal === "edit profile" &&<EditProfile/>}
                   </Modal>
                 )}
               </>

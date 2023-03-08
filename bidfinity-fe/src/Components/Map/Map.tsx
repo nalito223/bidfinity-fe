@@ -30,8 +30,10 @@ const Map: React.FC = () => {
       const { lat, lng } = project.location;
     
       const getCoordinates = async (lat: number, lng: number): Promise<LatLngExpression> => {
-        const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`);
+        // const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`);
+        // @ts-ignore
         const data = await response.json();
+        console.log("Data map", data)
         return [data.lat, data.lon];
       };
     

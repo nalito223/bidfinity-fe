@@ -75,73 +75,69 @@ const projectsData = [
   id: 1,
   project_title: 'Design and install new garden beds',
   created_date: '2022-02-01',
-  location: {lat: 34.103003, lng: -118.410468},
+  location: {lat: 34.103003, lng: -118.410468, address: "Los Angeles, CA"},
   project_summary: 'Looking for someone to help design and install new garden beds in our backyard. We would like a mix of perennials and annuals.',
   status: 'closed',
   contact_information: 'janedoe@example.com',
-  upload_id: 4
+  upload_id: 4,
+  viewPermission: []
   },
   {
   id: 2,
   project_title: 'Install new paver patio',
   created_date: '2022-02-03',
-  location: {lat: 40.744472, lng: -73.983169},
+  location: {lat: 40.744472, lng: -73.983169, address: "New York, NY"},
   project_summary: 'We need a new patio installed in our backyard. We want to use pavers and would like it to be large enough for a table and chairs.',
   status: 'open',
   contact_information: 'johndoe@example.com',
-  upload_id: 5
+  upload_id: 5,
+  viewPermission: []
   },
   {
   id: 3,
   project_title: 'Build a retaining wall',
   created_date: '2022-02-05',
-  location: {lat: 41.896414, lng: -87.624348},
+  location: {lat: 41.896414, lng: -87.624348, address: "Chicago, IL"},
   project_summary: 'We need a retaining wall built in our front yard to help with erosion control. We are looking for someone experienced in building retaining walls with natural stone.',
   status: 'closed',
   contact_information: 'bob@example.com',
-  upload_id: 6
+  upload_id: 6,
+  viewPermission: []
   },
   {
   id: 4,
   project_title: 'Install new irrigation system',
   created_date: '2022-02-07',
-  location: {lat: 37.752723, lng: -122.410886},
+  location: {lat: 37.752723, lng: -122.410886, address: "San Francisco, CA"},
   project_summary: 'We need a new irrigation system installed in our front yard. We have a mix of grass and plants and want to make sure everything is getting the right amount of water.',
   status: 'open',
   contact_information: 'janedoe@example.com',
-  upload_id: 7
+  upload_id: 7,
+  viewPermission: []
   },
   {
   id: 5,
   project_title: 'Add new plants to front yard',
   created_date: '2022-02-10',
-  location: {lat: 32.787631, lng: -96.801305},
+  location: {lat: 32.787631, lng: -96.801305, address: "Dallas, TX"},
   project_summary: 'Looking for someone to help us add new plants to our front yard. We want to add some color and texture and are open to suggestions!',
   status: 'closed',
   contact_information: 'johndoe@example.com',
-  upload_id: 8
+  upload_id: 8,
+  viewPermission: []
   },
   {
   id: 6,
   project_title: 'Build a pergola',
   created_date: '2022-02-12',
-  location: {lat: 34.068921, lng: -118.445181},
+  location: {lat: 34.068921, lng: -118.445181, address: "Los Angeles, CA"},
   project_summary: 'We would like to add a pergola to our backyard to provide some shade. We would like it to be large enough to fit a table and chairs underneath.',
   status: 'open',
   contact_information: 'bob@example.com',
-  upload_id: 9
+  upload_id: 9,
+  viewPermission: []
   },
-  {
-  id: 7,
-  project_title: 'Install new fence',
-  created_date: '2022-02-15',
-  location: {lat: 41.939954, lng: -87.655616},
-  project_summary: 'We need a new fence installed in our backyard. We want a wooden fence.', 
-  status: 'open',
-  contact_information: 'bobjeff@example.com',
-  upload_id: 10
-  }
-]
+  ];
 
 module.exports = {
   accountsData,
