@@ -13,6 +13,7 @@ import Supplier from "../Supplier/Supplier"
 import EditProject from "../EditProject/EditProject";
 import ProjectDetail from "../ProjectDetail/ProjectDetail";
 import EditProfile from "../EditProfile/EditProfile";
+import CreateProjectForm from "../CreateProjectForm/CreateProjectForm";
 // import Map from "../Map/Map"
 const { accountsData, uploadsData, projectsData } = require('../fakeData/data');
 
@@ -106,7 +107,9 @@ const App: React.FC = () => {
       setModal("edit project")
     } else if (selectedForm === "edit profile") {
       setModal('edit profile')
-    } 
+    } else if (selectedForm === "create project") {
+      setModal('create project')
+    }
 
     setShowModal(true);
 
@@ -180,6 +183,7 @@ const App: React.FC = () => {
                    {selectedProject && modal === "edit project" && <EditProject />}
                    {selectedProject && modal === "project detail" &&<ProjectDetail />}
                    {selectedProject && modal === "edit profile" &&<EditProfile/>}
+                   {selectedProject && modal === "create project" &&<CreateProjectForm/>}
                   </Modal>
                 )}
               </>

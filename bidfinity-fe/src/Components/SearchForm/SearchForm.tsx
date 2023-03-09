@@ -95,9 +95,9 @@ const SearchForm: React.FC = () => {
   }
 
   return (
-    <div className="search-container">
-      <form onSubmit={handleSearch}>
-        <div className="form-field">
+    // <div className="search-container">
+      <form onSubmit={handleSearch} className="search-form-container">
+        {/* <div className="form-field"> */}
           <label htmlFor="keyword-search" className="form-label margin-above">Keyword Search:</label>
           <input
             type="text"
@@ -108,8 +108,8 @@ const SearchForm: React.FC = () => {
             value={keyword}
             onChange={(event) => setKeyword(event.target.value)}
           />
-        </div>
-        <div className="search-field">
+        {/* </div> */}
+        {/* <div className="search-field"> */}
           <label htmlFor="location-search" className="form-label margin-above" >Location:</label>
           <input
             type="text"
@@ -124,8 +124,8 @@ const SearchForm: React.FC = () => {
             }}
           />
           <p>{locationPreview}</p>
-        </div>
-        <div className="search-field">
+        {/* </div> */}
+        {/* <div className="search-field"> */}
           <label htmlFor="distance-filter" className="form-label margin-above">Within:</label>
           <select
             id="distance-filter"
@@ -139,8 +139,8 @@ const SearchForm: React.FC = () => {
             <option value="100">100 miles</option>
             <option value="500">500 miles</option>
           </select>
-        </div>
-        <div className="search-field">
+        {/* </div> */}
+        {/* <div className="search-field"> */}
           <label htmlFor="date-filter" className="form-label margin-above">Date:</label>
           <input
             type="date"
@@ -150,10 +150,10 @@ const SearchForm: React.FC = () => {
             value={date}
             onChange={(event) => setDate(event.target.value)}
           />
-        </div>
+        {/* </div> */}
         <button type="submit" className="log-in-button margin-above">Search</button>
       </form>
-    </div>
+    // </div>
   );
 
 }

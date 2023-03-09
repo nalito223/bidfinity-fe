@@ -5,6 +5,7 @@
   justify-content: center;
   padding: 20px;
   width: 90%;
+  
 }
 
 
@@ -40,14 +41,17 @@
 .form-input,
 .form-select {
   margin-top: 5px;
-  padding: 5px;
+ padding: 0;
+ padding-left: 2%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  /* padding: 5px; */
   border-radius: 5px;
   border: 1px solid #ccc;
   height: 4vh;
   font-size: 2vh;
   width: 100%;
   /* width: max-content; */
-
 }
 
 .form-button {
@@ -96,4 +100,20 @@
 .add-width {
   /* width: 100%; */
   /* background-color: red; */
+}
+
+.search-container {
+
+  /* width: 100%; */
+}
+
+.form-field {
+  
+  /* width: 100%; */
+}
+
+.search-form-container {
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
 }

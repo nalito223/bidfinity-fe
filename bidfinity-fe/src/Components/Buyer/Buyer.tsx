@@ -16,7 +16,7 @@ const Buyer: React.FC = () => {
 
         <div className="left-column">
           <center><h2>Search all projects</h2></center>
-          <SearchForm/>
+          <SearchForm />
           <button className="get-started-button margin-above">My projects</button>
         </div>
 
@@ -36,13 +36,13 @@ const Buyer: React.FC = () => {
               <img src={user?.image} alt="Avatar" className="avatar-image" />
             </div>
           </center>
-          <center><h2>My profile <img 
-          src={edit} alt="Edit icon" 
-          className="edit-icon" 
-          onClick={(e) => {
-            e.preventDefault();
-            openModal("edit profile");
-          }}
+          <center><h2>My profile <img
+            src={edit} alt="Edit icon"
+            className="edit-icon"
+            onClick={(e) => {
+              e.preventDefault();
+              openModal("edit profile");
+            }}
           /></h2></center>
 
           {/* <p><i>
@@ -66,8 +66,16 @@ const Buyer: React.FC = () => {
 
 
           {/* <center><h2>My projects</h2></center> */}
-          <center><button className="get-started-button margin-above">Create project</button></center>
-       
+
+          <center>
+            <button className="get-started-button margin-above"
+              onClick={(e) => {
+                e.preventDefault();
+                openModal("create project");
+              }}
+            >Create project</button>
+          </center>
+
         </div>
 
       </div>

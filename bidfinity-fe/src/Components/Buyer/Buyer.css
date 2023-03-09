@@ -24,15 +24,13 @@
   width: 25%;
   /* height: 100%; */
   height: fit-content;
-  gap: 1%;
+  /* gap: 1%; */
   /* padding-left: 1%; */
   background-color: white;
   border-radius: 7px;
   /* padding-top: 2%; */
   background-color: RGB(204, 204, 204, 0.2);
-  padding: 1%;
-  padding-top: 2%;
-  padding-bottom: 2%;
+  padding: 2%;
 }
 
 .middle-column {
@@ -45,9 +43,7 @@
 
   background-color: RGB(204, 204, 204, 0.2);
   border-radius: 7px;
-  padding: 1%;
-  padding-top: 2%;
-  padding-bottom: 2%;
+  padding: 2%;
 }
 
 .right-column {
@@ -64,9 +60,10 @@
   /* padding-top: 2%; */
   background-color: white;
   background-color: RGB(204, 204, 204, 0.2);
-  padding: 1%;
-  padding-top: 2%;
-  padding-bottom: 2%;
+  padding: 2%;
+  /* padding-top: 2%;
+  padding-bottom: 2%; */
+ 
 }
 
 .map-container {
@@ -107,7 +104,7 @@
 }
 
 .avatar-image {
-  height: 95px
+  height: 100%
 }
 
 .user-info {

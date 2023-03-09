@@ -39,7 +39,7 @@ const accountsData = [
     bookmarked_projects: [2],
     country: 'USA',
     business_name: 'XYZ Corporation',
-    image: 'https://cdn-icons-png.flaticon.com/512/666/666201.png'
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjOvfTqBGZoquJTpUOSE-qEX_tSis01r63ow&usqp=CAU'
   }
 ];
 

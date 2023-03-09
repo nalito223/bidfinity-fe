@@ -21,10 +21,10 @@ const Map: React.FC = () => {
   useEffect(() => {
     const map = L.map('map').setView([37.0902, -95.7129], 4);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: 'Map data &copy; OpenStreetMap contributors',
-      maxZoom: 18,
-    }).addTo(map);
+    // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    //   attribution: 'Map data &copy; OpenStreetMap contributors',
+    //   maxZoom: 18,
+    // }).addTo(map);
 
     projectsData.forEach((project: Project, index: number, array: Project[]) => {
       const { lat, lng } = project.location;
