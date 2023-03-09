@@ -17,14 +17,19 @@ const TableInput: React.FC<TableInputProps> = ({ onPrint }) => {
   const [quantity, setQuantity] = useState(0);
   const [description, setDescription] = useState('');
 
-  const handleAddRow = (event: React.FormEvent<HTMLFormElement>) => {
+  // const handleAddRow = (event: React.MouseEvent<HTMLButtonElement>) => {
+  //   event.preventDefault();
+  //   setRows((prevRows) => [
+  //     ...prevRows,
+  //     { itemName: '', quantity: 0, description: '' },
+  //   ]);
+  // };
+
+  const handleAddRow = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    const newRow: TableRow = { itemName, quantity, description };
-    setRows([...rows, newRow]);
-    setItemName('');
-    setQuantity(0);
-    setDescription('');
+    setRows((prevRows) => [...prevRows, { itemName, quantity, description },]);
   };
+
 
   const handleDeleteRow = (index: number) => {
     const updatedRows = rows.filter((row, i) => i !== index);
@@ -33,22 +38,23 @@ const TableInput: React.FC<TableInputProps> = ({ onPrint }) => {
 
   return (
     <div>
-      <form onSubmit={handleAddRow} className="width">
+      <div className="width">
         <label htmlFor="itemName" className="form-label">Name of Line Item:</label>
         <input className="form-input" type="text" id="itemName" name="itemName" value={itemName} onChange={(e) => setItemName(e.target.value)} />
         <br></br>
-        <label htmlFor="quantity" className="form-label">Quantity:</label>
+        <label htmlFor="quantity" className="form-label margin-top">Quantity:</label>
         <input className="form-input" type="number" id="quantity" name="quantity" value={quantity} onChange={(e) => setQuantity(parseInt(e.target.value))} />
         <br></br>
-        <label className="form-label" htmlFor="description">Description:</label>
+        <label className="form-label margin-top" htmlFor="description">Description:</label>
         <textarea className="form-textarea" id="description" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
         <br></br>
-        <button type="submit">Add Row</button>
-      </form>
+        <button onClick={handleAddRow} className="margin-top">Add Row</button>
+      </div>
 
-      <table>
-        <thead>
+      <table className="form-table ">
+        <thead className="form-thead">
           <tr>
+            <th></th>
             <th>Name of Line Item</th>
             <th>Quantity</th>
             <th>Description</th>
@@ -58,6 +64,7 @@ const TableInput: React.FC<TableInputProps> = ({ onPrint }) => {
         <tbody>
           {rows.map((row, index) => (
             <tr key={index}>
+              <td>{index + 1}</td>
               <td>{row.itemName}</td>
               <td>{row.quantity}</td>
               <td>{row.description}</td>

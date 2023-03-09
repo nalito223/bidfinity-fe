@@ -117,6 +117,7 @@ const App: React.FC = () => {
 
   const closeModal = () => {
     setShowModal(false);
+    setModal("")
   };
 
   const handleOpenModal = () => {
@@ -182,8 +183,8 @@ const App: React.FC = () => {
                   <Modal>
                    {selectedProject && modal === "edit project" && <EditProject />}
                    {selectedProject && modal === "project detail" &&<ProjectDetail />}
-                   {selectedProject && modal === "edit profile" &&<EditProfile/>}
-                   {selectedProject && modal === "create project" &&<CreateProjectForm/>}
+                   {modal === "edit profile" && <EditProfile/>}
+                   {modal === "create project" && <CreateProjectForm/>}
                   </Modal>
                 )}
               </>

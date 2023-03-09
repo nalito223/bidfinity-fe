@@ -146,11 +146,12 @@ const SearchForm: React.FC = () => {
             type="date"
             id="date-filter"
             name="date"
-            className="form-input"
+            className="form-input fit-content"
             value={date}
             onChange={(event) => setDate(event.target.value)}
           />
         {/* </div> */}
+        <br></br>
         <button type="submit" className="log-in-button margin-above">Search</button>
       </form>
     // </div>

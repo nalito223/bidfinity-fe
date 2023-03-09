@@ -47,8 +47,8 @@ const CreateProjectForm: React.FC = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} className="width">
+    <div className="width">
+      <form onSubmit={handleSubmit} >
         <h2>Create Project</h2>
 
         <label htmlFor="project_title" className="form-label">Project Title:</label>
@@ -61,10 +61,10 @@ const CreateProjectForm: React.FC = () => {
           onChange={handleChange}
           required
         />
-        <br></br>
-        <label htmlFor="created_date" className="form-label">Created Date:</label>
+      
+        <label htmlFor="created_date" className="form-label margin-top">Created Date:</label>
         <input
-          className="form-input"
+          className="form-input fit-content"
           type="date"
           id="created_date"
           name="created_date"
@@ -72,8 +72,8 @@ const CreateProjectForm: React.FC = () => {
           onChange={handleChange}
           required
         />
-        <br></br>
-        <label htmlFor="location" className="form-label">Location:</label>
+      
+        <label htmlFor="location" className="form-label margin-top">Location:</label>
         <input
           className="form-input"
           type="text"
@@ -88,8 +88,8 @@ const CreateProjectForm: React.FC = () => {
           }
           required
         />
-        <br></br>
-        <label htmlFor="project_summary" className="form-label"> Project Summary:</label>
+       
+        <label htmlFor="project_summary" className="form-label margin-top"> Project Summary:</label>
         <textarea
           className="form-textarea"
           id="project_summary"
@@ -98,14 +98,14 @@ const CreateProjectForm: React.FC = () => {
           onChange={handleChange}
           required
         />
-        <br></br>
-        <label htmlFor="status" className="form-label">Status:</label>
+      
+        <label htmlFor="status" className="form-label margin-top">Status:</label>
         <select id="status" name="status" value={projectData.status} onChange={handleChange} required className="form-select">
           <option value="open">Open</option>
           <option value="closed">Closed</option>
         </select>
-        <br></br>
-        <label htmlFor="contact_information" className="form-label">Contact Information:</label>
+        
+        <label htmlFor="contact_information" className="form-label margin-top">Contact Information:</label>
         <input
           className="form-input"
           type="email"
@@ -115,10 +115,10 @@ const CreateProjectForm: React.FC = () => {
           onChange={handleChange}
           required
         />
-        <br></br>
+     
         <h3>Add line items</h3>
         <TableInput onPrint={handleTablePrint} />
-        <button type="submit" className="log-in-button">Create Project</button>
+        <button type="submit" className="margin-top">Create Project</button>
 
       </form>
 
@@ -145,7 +145,7 @@ const CreateProjectForm: React.FC = () => {
           </table>
         </div>
       )}
-  </div>
+    </div>
   )
 }
 
