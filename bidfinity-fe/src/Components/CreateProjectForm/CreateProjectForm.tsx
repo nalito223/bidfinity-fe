@@ -4,7 +4,7 @@ import TableInput from '../TableInput/TableInput';
 
 interface TableRow {
   itemName: string;
-  quantity: number;
+  quantity: string;
   description: string;
 }
 // onSuccess
@@ -117,8 +117,8 @@ const CreateProjectForm: React.FC = () => {
         />
      
         <h3>Add line items</h3>
-        <TableInput onPrint={handleTablePrint} />
-        <button type="submit" className="margin-top">Create Project</button>
+        <TableInput/>
+        <button type="submit" className="margin-top log-in-button fit-content">Create Project</button>
 
       </form>
 

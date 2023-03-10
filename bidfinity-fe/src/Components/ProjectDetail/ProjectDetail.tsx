@@ -21,7 +21,7 @@ function ProjectDetail() {
     <>
       <center>
         <h2>Project Detail</h2>
-        <button onClick={handlePrint}>Print</button>
+        <button onClick={handlePrint} className="log-in-button">Print</button>
       </center>
       <div className="project-detail-text" ref={componentRef}>
         <p>
@@ -35,7 +35,7 @@ function ProjectDetail() {
         </p>
         <p>
           <strong>Location:</strong>{' '}
-          {`${selectedProject?.location.lat}, ${selectedProject?.location.lng}`}
+          {selectedProject?.location.address}
         </p>
         <p>
           <strong>Summary:</strong> {selectedProject?.project_summary}

@@ -19,15 +19,21 @@
 .form-thead th:first-child,
 .form-thead th:nth-child(2),
 .form-thead th:nth-child(3) {
-  width: fit-content;
-  max-width: 100px;
+  width: .02%;
+  white-space: nowrap;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.form-thead th:nth-child(4) {
+  width: 70%;
   white-space: nowrap;
   padding: 10px;
   border-right: 1px solid #ddd;
 }
 
 .form-thead th:last-child {
-  width: 100%;
+  width: 1%;
   padding: 10px;
 }
 
@@ -38,11 +44,26 @@
   border-right: 1px solid #ddd;
 }
 
+.form-table td:first-child,
+.form-table td:nth-child(2),
+.form-table td:nth-child(3) {
+  width: .02%;
+  white-space: nowrap;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.form-table td:nth-child(4) {
+  width: 70%;
+  white-space: normal;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
 .form-table td:last-child {
-  text-align: left;
+  text-align: center;
   border-right: none;
-  width: 20px;
-border: 2px solid green
+  width: 1%;
 }
 
 .form-table button {
@@ -53,6 +74,7 @@ border: 2px solid green
   border-radius: 5px;
   cursor: pointer;
   font-size: 14px;
+  margin: 0;
 }
 
 .form-table button:hover {

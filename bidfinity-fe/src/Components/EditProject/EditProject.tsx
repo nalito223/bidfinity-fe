@@ -1,11 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { AppContext } from '../App/AppContext';
-
-// interface EditProjectFormProps {
-//   project: Project;
-//   uploads: Upload[];
-//   onSave: (project: Project) => void;
-// }
+import TableInput from '../TableInput/TableInput';
 
 const EditProject: React.FC = () => {
   const { selectedProject, setSelectedProject } = useContext(AppContext);
@@ -69,17 +64,19 @@ const EditProject: React.FC = () => {
         </select>
       </label>
       <br />
-      <label className="form-label">
+      {/* <label className="form-label">
         Upload:
-        {/* <select value={selectedUploadId} onChange={handleUploadChange}>
+        <select value={selectedUploadId} onChange={handleUploadChange}>
           {uploads.map(upload => (
             <option key={upload.id} value={upload.id}>
               {upload.filename}
             </option>
           ))}
-        </select> */}
+        </select>
       </label>
-      <br />
+      <br /> */}
+    
+      <TableInput/>
       <button type="submit" className="log-in-button">Save</button>
     </form>
   );

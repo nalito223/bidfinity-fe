@@ -1,35 +1,24 @@
-import React, { useState } from 'react';
-import "./TableInput.css"
+import React, { useContext, useState } from 'react';
+import "./TableInput.css";
+import { AppContext } from '../App/AppContext';
 
 interface TableRow {
   itemName: string;
-  quantity: number;
+  quantity: string;
   description: string;
 }
 
-interface TableInputProps {
-  onPrint: (data: TableRow[]) => void;
-}
-
-const TableInput: React.FC<TableInputProps> = ({ onPrint }) => {
-  const [rows, setRows] = useState<TableRow[]>([]);
+const TableInput: React.FC = () => {
+  const { selectedProject } = useContext(AppContext);
+  const [rows, setRows] = useState<TableRow[]>(selectedProject ? selectedProject.lineItems : []);
   const [itemName, setItemName] = useState('');
   const [quantity, setQuantity] = useState(0);
   const [description, setDescription] = useState('');
 
-  // const handleAddRow = (event: React.MouseEvent<HTMLButtonElement>) => {
-  //   event.preventDefault();
-  //   setRows((prevRows) => [
-  //     ...prevRows,
-  //     { itemName: '', quantity: 0, description: '' },
-  //   ]);
-  // };
-
   const handleAddRow = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    setRows((prevRows) => [...prevRows, { itemName, quantity, description },]);
+    setRows((prevRows) => [...prevRows, { itemName, quantity: quantity.toString(), description }]);;
   };
-
 
   const handleDeleteRow = (index: number) => {
     const updatedRows = rows.filter((row, i) => i !== index);
@@ -48,7 +37,7 @@ const TableInput: React.FC<TableInputProps> = ({ onPrint }) => {
         <label className="form-label margin-top" htmlFor="description">Description:</label>
         <textarea className="form-textarea" id="description" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
         <br></br>
-        <button onClick={handleAddRow} className="margin-top">Add Row</button>
+        <button onClick={handleAddRow} className="margin-top log-in-button">Add Row</button>
       </div>
 
       <table className="form-table ">
