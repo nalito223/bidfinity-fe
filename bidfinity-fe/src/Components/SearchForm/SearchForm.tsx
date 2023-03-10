@@ -6,14 +6,16 @@ interface Project {
   id: number;
   project_title: string;
   created_date: string;
-  location: {
-    lat: number;
-    lng: number;
-  };
+  location: { lat: number; lng: number; address: string; };
   project_summary: string;
   status: string;
   contact_information: string;
   upload_id: number;
+  lineItems: {
+    itemName: string;
+    quantity: string;
+    description: string;
+  }[];
 }
 
 

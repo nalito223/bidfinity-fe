@@ -51,6 +51,11 @@ interface Project {
   status: string;
   contact_information: string;
   upload_id: number;
+  lineItems: {
+    itemName: string;
+    quantity: string;
+    description: string;
+  }[];
 }
 
 const App: React.FC = () => {

@@ -80,7 +80,24 @@ const projectsData = [
   status: 'closed',
   contact_information: 'janedoe@example.com',
   upload_id: 4,
-  viewPermission: []
+  viewPermission: [],
+  lineItems: [
+    {
+      itemName: 'Garden soil',
+      quantity: '10 bags',
+      description: 'High-quality garden soil for new garden beds',
+    },
+    {
+      itemName: 'Perennial plants',
+      quantity: '6',
+      description: 'Assorted perennial plants for year-round color',
+    },
+    {
+      itemName: 'Annual plants',
+      quantity: '12',
+      description: 'Assorted annual plants for seasonal color',
+    },
+  ]
   },
   {
   id: 2,
@@ -91,7 +108,24 @@ const projectsData = [
   status: 'open',
   contact_information: 'johndoe@example.com',
   upload_id: 5,
-  viewPermission: []
+  viewPermission: [],
+  lineItems: [
+    {
+      itemName: 'Garden soil',
+      quantity: '10 bags',
+      description: 'High-quality garden soil for new garden beds',
+    },
+    {
+      itemName: 'Perennial plants',
+      quantity: '6',
+      description: 'Assorted perennial plants for year-round color',
+    },
+    {
+      itemName: 'Annual plants',
+      quantity: '12',
+      description: 'Assorted annual plants for seasonal color',
+    },
+  ]
   },
   {
   id: 3,
@@ -102,7 +136,24 @@ const projectsData = [
   status: 'closed',
   contact_information: 'bob@example.com',
   upload_id: 6,
-  viewPermission: []
+  viewPermission: [],
+  lineItems: [
+    {
+      itemName: 'Garden soil',
+      quantity: '10 bags',
+      description: 'High-quality garden soil for new garden beds',
+    },
+    {
+      itemName: 'Perennial plants',
+      quantity: '6',
+      description: 'Assorted perennial plants for year-round color',
+    },
+    {
+      itemName: 'Annual plants',
+      quantity: '12',
+      description: 'Assorted annual plants for seasonal color',
+    },
+  ]
   },
   {
   id: 4,
@@ -113,7 +164,24 @@ const projectsData = [
   status: 'open',
   contact_information: 'janedoe@example.com',
   upload_id: 7,
-  viewPermission: []
+  viewPermission: [],
+  lineItems: [
+    {
+      itemName: 'Garden soil',
+      quantity: '10 bags',
+      description: 'High-quality garden soil for new garden beds',
+    },
+    {
+      itemName: 'Perennial plants',
+      quantity: '6',
+      description: 'Assorted perennial plants for year-round color',
+    },
+    {
+      itemName: 'Annual plants',
+      quantity: '12',
+      description: 'Assorted annual plants for seasonal color',
+    },
+  ]
   },
   {
   id: 5,
@@ -124,7 +192,24 @@ const projectsData = [
   status: 'closed',
   contact_information: 'johndoe@example.com',
   upload_id: 8,
-  viewPermission: []
+  viewPermission: [],
+  lineItems: [
+    {
+      itemName: 'Garden soil',
+      quantity: '10 bags',
+      description: 'High-quality garden soil for new garden beds',
+    },
+    {
+      itemName: 'Perennial plants',
+      quantity: '6',
+      description: 'Assorted perennial plants for year-round color',
+    },
+    {
+      itemName: 'Annual plants',
+      quantity: '12',
+      description: 'Assorted annual plants for seasonal color',
+    },
+  ]
   },
   {
   id: 6,
@@ -135,7 +220,24 @@ const projectsData = [
   status: 'open',
   contact_information: 'bob@example.com',
   upload_id: 9,
-  viewPermission: []
+  viewPermission: [],
+  lineItems: [
+    {
+      itemName: 'Garden soil',
+      quantity: '10 bags',
+      description: 'High-quality garden soil for new garden beds',
+    },
+    {
+      itemName: 'Perennial plants',
+      quantity: '6',
+      description: 'Assorted perennial plants for year-round color',
+    },
+    {
+      itemName: 'Annual plants',
+      quantity: '12',
+      description: 'Assorted annual plants for seasonal color',
+    },
+  ]
   },
   ];
 

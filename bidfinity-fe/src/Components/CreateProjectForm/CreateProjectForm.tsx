@@ -128,8 +128,8 @@ const CreateProjectForm: React.FC = () => {
           <table>
             <thead>
               <tr>
-                <th>Name of Line Item</th>
-                <th>Quantity</th>
+                <th>Name</th>
+                <th>Qty</th>
                 <th>Description</th>
               </tr>
             </thead>

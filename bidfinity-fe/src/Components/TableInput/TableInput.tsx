@@ -55,8 +55,8 @@ const TableInput: React.FC<TableInputProps> = ({ onPrint }) => {
         <thead className="form-thead">
           <tr>
             <th></th>
-            <th>Name of Line Item</th>
-            <th>Quantity</th>
+            <th>Name</th>
+            <th>Qty</th>
             <th>Description</th>
             <th></th>
           </tr>

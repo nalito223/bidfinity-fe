@@ -47,9 +47,31 @@ function ProjectDetail() {
           <strong>Contact Information:</strong>{' '}
           {selectedProject?.contact_information}
         </p>
-        <p>
+        {/* <p>
           <strong>Upload ID:</strong> {selectedProject?.upload_id}
-        </p>
+        </p> */}
+     
+
+      <table className="form-table ">
+        <thead className="form-thead">
+          <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Qty</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {selectedProject?.lineItems.map((row, index) => (
+            <tr key={index}>
+              <td>{index + 1}</td>
+              <td>{row.itemName}</td>
+              <td>{row.quantity}</td>
+              <td>{row.description}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
       </div>
     </>
   );

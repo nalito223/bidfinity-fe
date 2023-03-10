@@ -14,8 +14,12 @@ interface Project {
   status: string;
   contact_information: string;
   upload_id: number;
+  lineItems: {
+    itemName: string;
+    quantity: string;
+    description: string;
+  }[];
 }
-
 
 const ProjectCards = () => {
   const { projectsData, user, openModal, setSelectedProject } = useContext(AppContext);

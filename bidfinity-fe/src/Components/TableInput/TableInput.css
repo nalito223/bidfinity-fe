@@ -8,6 +8,7 @@
   margin: 0 auto;
   margin-top: 20px;
   margin-bottom: 40px;
+  border: 1px solid #ddd;
 }
 
 .form-thead {
@@ -15,19 +16,33 @@
   font-weight: bold;
 }
 
-.form-thead th {
+.form-thead th:first-child,
+.form-thead th:nth-child(2),
+.form-thead th:nth-child(3) {
+  width: fit-content;
+  max-width: 100px;
+  white-space: nowrap;
   padding: 10px;
-  text-align: left;
+  border-right: 1px solid #ddd;
 }
 
 .form-thead th:last-child {
-  width: 80px; /* make the last column (delete button) narrower */
+  width: 100%;
+  padding: 10px;
 }
 
 .form-table td {
-  border: 1px solid #ddd;
+  border: none;
   padding: 10px;
+  border-top: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+}
+
+.form-table td:last-child {
   text-align: left;
+  border-right: none;
+  width: 20px;
+border: 2px solid green
 }
 
 .form-table button {
