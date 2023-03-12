@@ -44,14 +44,14 @@ const SearchForm: React.FC = () => {
 
   async function handleSearch(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-  
+
     // Wait for location to be discovered
-    await new Promise(() => {
-      if (location) {
-        handleLocation();
-      }
-    });
-  
+    if (location) {
+      await new Promise(() => {
+      });
+      handleLocation();
+    }
+
     // Make a copy of the projects data
     let filteredProjects: Project[] = [...projectsData];
 
