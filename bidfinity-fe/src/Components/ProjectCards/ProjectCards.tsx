@@ -25,28 +25,6 @@ const ProjectCards = () => {
   const { projectsData, user, openModal, setSelectedProject } = useContext(AppContext);
   const sortedProjectsData = projectsData.sort((a, b) => new Date(b.created_date).getTime() - new Date(a.created_date).getTime());
 
-  // const [projectAddresses, setProjectAddresses] = useState<{ [projectId: number]: string }>({});
-
-  // useEffect(() => {
-  //   const fetchAddresses = async () => {
-  //     const newProjectAddresses: { [projectId: number]: string } = {};
-  //     for (const project of sortedProjectsData) {
-  //       const address = await getAddress(project);
-  //       newProjectAddresses[project.id] = address;
-  //     }
-  //     setProjectAddresses(newProjectAddresses);
-  //   };
-  //   fetchAddresses();
-  // }, [sortedProjectsData]);
-
-  // const getAddress = async (project: Project): Promise<string> => {
-  //   const lat: number = project.location.lat
-  //   const lng: number = project.location.lng
-  //   const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`);
-  //   const data = await response.json();
-  //   return data.address.city;
-  // };
-
   const allCards = () => {
     return (
       <div>

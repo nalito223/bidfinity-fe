@@ -63,10 +63,11 @@ const App: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const [modal, setModal] = useState("");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [searchedLat, setSearchedLat] = useState<number>(0);
-  const [searchedLon, setSearchedLon] = useState<number>(0);
+  const [searchedLat, setSearchedLat] = useState<number | null>(null);
+  const [searchedLon, setSearchedLon] = useState<number | null>(null);
   const [projectsData, setProjectsData] = useState<Project[]>([]);
   const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
+  const [allProjects, setAllProjects] = useState<Project[]>([...projects]);
 
   const navigate = useNavigate();
 
@@ -160,11 +161,13 @@ const App: React.FC = () => {
         setSearchedLat,
         setSearchedLon,
         setFilteredProjects,
+        setProjectsData,
         searchedLat,
         searchedLon,
         accountsData,
         projectsData,
         selectedProject,
+        allProjects
       }}>
       <main className="App">
         <Nav />

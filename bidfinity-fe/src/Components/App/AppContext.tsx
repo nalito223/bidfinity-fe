@@ -38,22 +38,24 @@ interface AppContextType {
   openModal: (selectedForm: string) => void;
   closeModal: () => void;
   setSelectedProject: Dispatch<SetStateAction<Project | null>>;
-  setSearchedLat: Dispatch<SetStateAction<number>>;
-  setSearchedLon: Dispatch<SetStateAction<number>>;
+  setSearchedLat: Dispatch<SetStateAction<number | null>>;
+  setSearchedLon: Dispatch<SetStateAction<number | null>>;
   handleOpenModal: () => void;
   handleCreateAccount: (email: string, password: string, userType: string) => void;
   setFilteredProjects: React.Dispatch<React.SetStateAction<Project[]>>;
-  searchedLat: number;
-  searchedLon: number;
+  setProjectsData: React.Dispatch<React.SetStateAction<Project[]>>;
+  searchedLat: number | null;
+  searchedLon: number | null;
   accountsData: Account[];
   selectedProject?: Project | null;
   projectsData: Project[];
+  allProjects: Project[];
 }
 
 export const AppContext = createContext<AppContextType>({
   user: null,
-  searchedLat: 0,
-  searchedLon: 0,
+  searchedLat: null,
+  searchedLon: null,
   handleLogin: () => { },
   handleLogout: () => { },
   openModal: () => { },
@@ -64,9 +66,11 @@ export const AppContext = createContext<AppContextType>({
   setFilteredProjects: () => { },
   setSearchedLat: () => { },
   setSearchedLon: () => { },
+  setProjectsData: () => { },
   selectedProject: null,
   accountsData: [],
   projectsData: [],
+  allProjects: [],
 });
 
 export default AppContext;

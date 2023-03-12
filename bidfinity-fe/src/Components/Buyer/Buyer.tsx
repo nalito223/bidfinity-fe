@@ -17,7 +17,7 @@ const Buyer: React.FC = () => {
         <div className="left-column">
           <center><h2>Search all projects</h2></center>
           <SearchForm />
-          <button className="get-started-button margin-above">My projects</button>
+          {/* <button className="get-started-button margin-above">My projects</button> */}
         </div>
 
         <div className="middle-column">

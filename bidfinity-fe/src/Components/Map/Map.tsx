@@ -21,12 +21,14 @@ const Map: React.FC = () => {
   useEffect(() => {
 
     let map: any
-    if (searchedLat === 0) {
+    if (searchedLat === null) {
       map = L.map('map').setView([37.0902, -95.7129], 4);
     } else {
+      // @ts-ignore
       map = L.map('map').setView([searchedLat, searchedLon], 6);
      
     }
+    
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: 'Map data &copy; OpenStreetMap contributors',
