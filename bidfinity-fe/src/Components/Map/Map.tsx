@@ -21,7 +21,7 @@ const Map: React.FC = () => {
   useEffect(() => {
 
     let map: any
-    if (searchedLat === null) {
+    if (searchedLat === 0) {
       map = L.map('map').setView([37.0902, -95.7129], 4);
     } else {
       map = L.map('map').setView([searchedLat, searchedLon], 6);

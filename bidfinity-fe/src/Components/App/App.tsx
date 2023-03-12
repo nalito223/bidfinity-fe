@@ -63,8 +63,8 @@ const App: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const [modal, setModal] = useState("");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [searchedLat, setSearchedLat] = useState<number | null>(null);
-  const [searchedLon, setSearchedLon] = useState<number | null>(null);
+  const [searchedLat, setSearchedLat] = useState<number>(0);
+  const [searchedLon, setSearchedLon] = useState<number>(0);
   const [projectsData, setProjectsData] = useState<Project[]>([]);
   const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
 

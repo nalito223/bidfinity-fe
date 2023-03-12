@@ -27,8 +27,8 @@ const SearchForm: React.FC = () => {
   const [date, setDate] = useState<string>('');
 
   async function handleLocation() {
-    setSearchedLat(null)
-    setSearchedLon(null)
+    setSearchedLat(0)
+    setSearchedLon(0)
     const endpoint = `https://nominatim.openstreetmap.org/search?q=${location}&format=json&limit=1`;
     const response = await fetch(endpoint);
     const data = await response.json();
