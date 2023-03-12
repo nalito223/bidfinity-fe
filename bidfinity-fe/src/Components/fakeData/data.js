@@ -70,7 +70,7 @@ const uploadsData = [
   }
 ];
 
-const projectsData = [
+const projects = [
   {
   id: 1,
   project_title: 'Design and install new garden beds',
@@ -244,7 +244,7 @@ const projectsData = [
 module.exports = {
   accountsData,
   uploadsData,
-  projectsData
+  projects
 };
 
 

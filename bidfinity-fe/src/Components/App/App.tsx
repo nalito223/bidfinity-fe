@@ -1,5 +1,5 @@
 import { NavLink, Route, Routes, useNavigate } from "react-router-dom"
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { AppContext } from "./AppContext";
 import './App.css'
 import Nav from '../Nav/Nav'
@@ -15,7 +15,7 @@ import ProjectDetail from "../ProjectDetail/ProjectDetail";
 import EditProfile from "../EditProfile/EditProfile";
 import CreateProjectForm from "../CreateProjectForm/CreateProjectForm";
 // import Map from "../Map/Map"
-const { accountsData, uploadsData, projectsData } = require('../fakeData/data');
+const { accountsData, uploadsData, projects } = require('../fakeData/data');
 
 
 type Account = {
@@ -59,13 +59,25 @@ interface Project {
 }
 
 const App: React.FC = () => {
-  // const [user, setUser] = useState<Account | null>(null);
-  const [user, setUser] = useState<Account | null>(accountsData[2]);
+  const [user, setUser] = useState<Account | null>(accountsData[1]);
   const [showModal, setShowModal] = useState(false);
   const [modal, setModal] = useState("");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [searchedLat, setSearchedLat] = useState<number | null>(null);
+  const [searchedLon, setSearchedLon] = useState<number | null>(null);
+  const [projectsData, setProjectsData] = useState<Project[]>([]);
+  const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (filteredProjects.length > 0) {
+      setProjectsData(filteredProjects);
+    } else {
+      setProjectsData(projects);
+    }
+  }, [projects, searchedLat, searchedLon, filteredProjects]);
+
   const handleLogin = (matchingAccount: Account) => {
     setUser(matchingAccount);
     navigate(`/user/${matchingAccount.id}`);
@@ -123,6 +135,7 @@ const App: React.FC = () => {
   const closeModal = () => {
     setShowModal(false);
     setModal("")
+    setSelectedProject(null)
   };
 
   const handleOpenModal = () => {
@@ -144,6 +157,11 @@ const App: React.FC = () => {
         handleOpenModal,
         handleCreateAccount,
         setSelectedProject,
+        setSearchedLat,
+        setSearchedLon,
+        setFilteredProjects,
+        searchedLat,
+        searchedLon,
         accountsData,
         projectsData,
         selectedProject,
@@ -186,10 +204,10 @@ const App: React.FC = () => {
                 <Buyer />
                 {showModal && (
                   <Modal>
-                   {selectedProject && modal === "edit project" && <EditProject />}
-                   {selectedProject && modal === "project detail" &&<ProjectDetail />}
-                   {modal === "edit profile" && <EditProfile/>}
-                   {modal === "create project" && <CreateProjectForm/>}
+                    {selectedProject && modal === "edit project" && <EditProject />}
+                    {selectedProject && modal === "project detail" && <ProjectDetail />}
+                    {modal === "edit profile" && <EditProfile />}
+                    {modal === "create project" && <CreateProjectForm />}
                   </Modal>
                 )}
               </>

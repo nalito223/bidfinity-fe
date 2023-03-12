@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { AppContext } from '../App/AppContext';
-
+// import { Project } from '../types';
 
 interface Project {
   id: number;
@@ -18,149 +18,138 @@ interface Project {
   }[];
 }
 
-
-// interface Location {
-//   lat: string;
-//   lng: string;
-// }
-
-// const parseLocation = (location: { lat: string; lng: string }): Location => {
-//   return location;
-// };
-
-
-// const getDistanceInMiles = (location1: { lat: string; lng: string }, location2: { lat: string; lng: string }): number => {
-//   const lat1 = location1.lat;
-//   const lat2 = location2.lat;
-//   const lon1 = location1.lng;
-//   const lon2 = location2.lng;
-//   const R: number = 3958.8; // Earth's radius in miles
-//   const phi1: number = (lat1 * Math.PI) / 180; // Convert lat1 to radians
-//   const phi2: number = (lat2 * Math.PI) / 180; // Convert lat2 to radians
-//   const deltaPhi: number = ((lat2 - lat1) * Math.PI) / 180; // Convert deltaLat to radians
-//   const deltaLambda: number = ((lon2 - lon1) * Math.PI) / 180; // Convert deltaLon to radians
-//   const a: number = Math.sin(deltaPhi / 2) * Math.sin(deltaPhi / 2) +
-//     Math.cos(phi1) * Math.cos(phi2) *
-//     Math.sin(deltaLambda / 2) * Math.sin(deltaLambda / 2);
-//   const c: number = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-//   const distance: number = R * c;
-//   return distance;
-// };
-
-const filterProjects = (projectsData: Project[], keyword: string, location: { lat: string; lng: string }, distance: number, date: string, lat: number, lon: number): Project[] => {
-  const filteredProjects = projectsData.filter((project) => {
-    const titleContainsKeyword = project.project_title.toLowerCase().includes(keyword.toLowerCase());
-    const summaryContainsKeyword = project.project_summary.toLowerCase().includes(keyword.toLowerCase());
-    const projectLocation = project.location;
-    // const isWithinDistance = location ? getDistanceInMiles({ lat, lng }, projectLocation) <= distance : true;
-    // const createdOnDate = project.created_date === date;
-    // return titleContainsKeyword || summaryContainsKeyword || (location && isWithinDistance) || (date && createdOnDate);
-  });
-  return filteredProjects;
-};
-
-
 const SearchForm: React.FC = () => {
-  const { projectsData } = useContext(AppContext);
+  const { projectsData, setSearchedLat, setSearchedLon, searchedLat, searchedLon, setFilteredProjects } = useContext(AppContext);
   const [keyword, setKeyword] = useState<string>('');
   const [location, setLocation] = useState<string>('');
-  const [locationPreview, setLocationPreview] = useState<string>('');
+  const [locationPreview, setLocationPreview] = useState<{ display_name: string } | null>(null);
   const [distance, setDistance] = useState<number>(10);
   const [date, setDate] = useState<string>('');
 
+  async function handleLocation() {
+    setSearchedLat(null)
+    setSearchedLon(null)
+    const endpoint = `https://nominatim.openstreetmap.org/search?q=${location}&format=json&limit=1`;
+    const response = await fetch(endpoint);
+    const data = await response.json();
+    console.log(data[0]);
+    setSearchedLat(data[0].lat)
+    setSearchedLon(data[0].lon)
+    setLocationPreview(data[0] || null);
+  }
 
-  const handleSearch = async (event: React.FormEvent<HTMLFormElement>) => {
+  function handleSearch(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    // Use the Nominatim API to get the latitude and longitude for the input location
-    const locationResponse = await fetch(`https://nominatim.openstreetmap.org/search?q=${location}&format=json`);
-    const [firstResult] = await locationResponse.json();
+    // Make a copy of the projects data
+    let filteredProjects: Project[] = [...projectsData];
 
-    if (!firstResult) {
-      // Handle the case where no location results were found
-      console.log('No location results found');
-      return;
+    // Filter by keyword
+    filteredProjects = filteredProjects.filter(project =>
+      project.project_title.toLowerCase().includes(keyword.toLowerCase()) ||
+      project.project_summary.toLowerCase().includes(keyword.toLowerCase())
+    );
+
+    // Filter by location
+    if (searchedLat && searchedLon) {
+      filteredProjects = filteredProjects.filter(project => {
+        const projectDistance = getDistance(searchedLat, searchedLon, project.location.lat, project.location.lng);
+        return projectDistance <= distance;
+      });
     }
 
-    const { lat, lon } = firstResult;
+    // Filter by date
+    if (date) {
+      filteredProjects = filteredProjects.filter(project => {
+        const projectDate = new Date(project.created_date);
+        const searchDate = new Date(date);
+        return projectDate >= searchDate;
+      });
+    }
 
-    // const filteredProjects = filterProjects(projectsData, keyword, distance, date, lat, lon);
-    // console.log(filteredProjects);
-  };
+    // Update the filtered projects state
+    setFilteredProjects(filteredProjects);
+  }
 
-  async function handleLocation(event: React.ChangeEvent<HTMLInputElement>) {
-    // const endpoint = `https://nominatim.openstreetmap.org/search?q=${event.target.value}&format=json&limit=1`;
-    // const response = await fetch(endpoint);
-    // const data = await response.json();
-    // console.log(data)
-    // setLocationPreview(data.address.city)
+  // Helper function to calculate the distance between two points
+  function getDistance(lat1: number, lon1: number, lat2: number, lon2: number): number {
+    const R = 6371; // Radius of the earth in km
+    const dLat = deg2rad(lat2 - lat1);
+    const dLon = deg2rad(lon2 - lon1);
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+      Math.sin(dLon / 2) * Math.sin(dLon / 2)
+      ;
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const d = R * c; // Distance in km
+    return d * 0.621371; // Convert to miles
+  }
+
+  // Helper function to convert degrees to radians
+  function deg2rad(deg: number): number {
+    return deg * (Math.PI / 180)
   }
 
   return (
-    // <div className="search-container">
-      <form onSubmit={handleSearch} className="search-form-container">
-        {/* <div className="form-field"> */}
-          <label htmlFor="keyword-search" className="form-label margin-above">Keyword Search:</label>
-          <input
-            type="text"
-            id="keyword-search"
-            name="keyword"
-            placeholder="Search by keyword"
-            className="form-input"
-            value={keyword}
-            onChange={(event) => setKeyword(event.target.value)}
-          />
-        {/* </div> */}
-        {/* <div className="search-field"> */}
-          <label htmlFor="location-search" className="form-label margin-above" >Location:</label>
-          <input
-            type="text"
-            id="location-search"
-            name="location"
-            placeholder="Enter a location"
-            className="form-input"
-            value={location}
-            onChange={(event) => {
-              handleLocation(event)
-              setLocation(event.target.value)
-            }}
-          />
-          <p>{locationPreview}</p>
-        {/* </div> */}
-        {/* <div className="search-field"> */}
-          <label htmlFor="distance-filter" className="form-label margin-above">Within:</label>
-          <select
-            id="distance-filter"
-            name="distance"
-            className="form-select"
-            value={distance}
-            onChange={(event) => setDistance(parseInt(event.target.value))}
-          >
-            <option value="10">10 miles</option>
-            <option value="50">50 miles</option>
-            <option value="100">100 miles</option>
-            <option value="500">500 miles</option>
-          </select>
-        {/* </div> */}
-        {/* <div className="search-field"> */}
-          <label htmlFor="date-filter" className="form-label margin-above">Date:</label>
-          <input
-            type="date"
-            id="date-filter"
-            name="date"
-            className="form-input fit-content"
-            value={date}
-            onChange={(event) => setDate(event.target.value)}
-          />
-        {/* </div> */}
-        <br></br>
-        <button type="submit" className="log-in-button margin-above">Search</button>
-      </form>
-    // </div>
-  );
+    <form onSubmit={(event) => handleSearch(event)} className="search-form-container">
+      <label htmlFor="keyword-search" className="form-label margin-above">Keyword Search:</label>
+      <input
+        type="text"
+        id="keyword-search"
+        name="keyword"
+        placeholder="Search by keyword"
+        className="form-input"
+        value={keyword}
+        onChange={(event) => setKeyword(event.target.value)}
+      />
+      <label htmlFor="location-search" className="form-label margin-above" >Location:</label>
 
+      <input
+        type="text"
+        id="location-search"
+        name="location"
+        placeholder="Enter a location"
+        className="form-input"
+        value={location}
+        onChange={(event) => {
+          setLocation(event.target.value)
+        }}
+
+      />
+      <button onClick={() => handleLocation()} style={{ background: 'none', border: 'none', outline: 'none', marginTop: "5px" }}>🔍</button>
+
+      {locationPreview && <p>{locationPreview.display_name}</p>}
+      {locationPreview == null && <p>Location not found. Try again with a zip code.</p>}
+
+      <label htmlFor="distance-filter" className="form-label margin-above">Within:</label>
+      <select
+        id="distance-filter"
+        name="distance"
+        className="form-select"
+        value={distance}
+        onChange={(event) => setDistance(parseInt(event.target.value))}
+      >
+        <option value="10">10 miles</option>
+        <option value="50">50 miles</option>
+        <option value="100">100 miles</option>
+        <option value="500">500 miles</option>
+      </select>
+
+      <label htmlFor="date-filter" className="form-label margin-above">Date:</label>
+      <input
+        type="date"
+        id="date-filter"
+        name="date"
+        className="form-input fit-content"
+        value={date}
+        onChange={(event) => setDate(event.target.value)}
+      />
+
+      <br></br>
+      <button type="submit" className="log-in-button margin-above">Search</button>
+    </form>
+  );
 }
 
 export default SearchForm
-
-

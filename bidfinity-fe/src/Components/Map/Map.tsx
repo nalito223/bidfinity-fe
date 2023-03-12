@@ -16,21 +16,28 @@ interface Project {
 
 
 const Map: React.FC = () => {
-  const { projectsData } = useContext(AppContext);
+  const { projectsData, searchedLat, searchedLon } = useContext(AppContext);
 
   useEffect(() => {
-    const map = L.map('map').setView([37.0902, -95.7129], 4);
 
-    // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    //   attribution: 'Map data &copy; OpenStreetMap contributors',
-    //   maxZoom: 18,
-    // }).addTo(map);
+    let map: any
+    if (searchedLat === null) {
+      map = L.map('map').setView([37.0902, -95.7129], 4);
+    } else {
+      map = L.map('map').setView([searchedLat, searchedLon], 6);
+     
+    }
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: 'Map data &copy; OpenStreetMap contributors',
+      maxZoom: 18,
+    }).addTo(map);
 
     projectsData.forEach((project: Project, index: number, array: Project[]) => {
       const { lat, lng } = project.location;
     
       const getCoordinates = async (lat: number, lng: number): Promise<LatLngExpression> => {
-        // const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`);
+        const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`);
         // @ts-ignore
         const data = await response.json();
         console.log("Data map", data)
@@ -39,7 +46,7 @@ const Map: React.FC = () => {
     
       getCoordinates(lat, lng).then((coordinates: LatLngExpression) => {
         const marker = L.marker(coordinates).addTo(map);
-        marker.bindPopup(`<p>${project.project_title}</p>`);
+        marker.bindPopup(`<p>${project.project_title}${" | " + project.contact_information}</p>`);
     
         // marker.bindPopup(`<a href="https://en.wikipedia.org/wiki/${project.location}">Wikipedia page for ${project.location}</a>`);
       });
